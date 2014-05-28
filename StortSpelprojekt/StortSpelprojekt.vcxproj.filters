@@ -1,0 +1,599 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Aspect">
+      <UniqueIdentifier>{fcfc14c1-4e58-4075-be2e-3fd52fefb7f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Aspect">
+      <UniqueIdentifier>{7e4f17a9-b470-488d-8fad-6d43004d2a94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System">
+      <UniqueIdentifier>{dc635c44-d873-468f-a7c6-08b69a8d3bba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Render">
+      <UniqueIdentifier>{70f8403e-876e-42c0-bec7-7b1ab0c8376c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Render\DLL Headers">
+      <UniqueIdentifier>{9a9a36d4-c86c-464a-aa67-93a14e78652f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Container">
+      <UniqueIdentifier>{170e37e7-354a-4427-ae48-9cd0125392c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Container">
+      <UniqueIdentifier>{7c371789-4970-41ff-9367-8562fbb59060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\System">
+      <UniqueIdentifier>{8d5dd538-cd1e-4c68-b734-58e62c64e8a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render">
+      <UniqueIdentifier>{1ae7ec0f-464b-4da5-93ec-ecabfed2f14b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{83623e12-5319-47e3-9f8c-204870fd3d42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input\DLL Headers">
+      <UniqueIdentifier>{6f317c66-c358-4544-a01c-1909c2d20bcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gameplay">
+      <UniqueIdentifier>{2c9dbd6c-c858-49ce-a438-00007e6adb47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\System\Debugger">
+      <UniqueIdentifier>{43551a7c-bf46-41a8-abde-bfe01afb52f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Debugger">
+      <UniqueIdentifier>{bc5c5494-f254-44ec-9876-a429857e2a6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ModelLoader">
+      <UniqueIdentifier>{a8d96f23-9b72-47f5-950f-9c38d59afa29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ModelLoader\DLL Headers">
+      <UniqueIdentifier>{478a9199-b29a-4fc3-9899-1e2a0c5c43b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Render\Post Effects">
+      <UniqueIdentifier>{3eb3a2a3-5b48-4dbe-9625-8c60c71e2682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Container\Post Effect Containers">
+      <UniqueIdentifier>{9723716b-b113-4361-9f2f-9c6174b7c495}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\INI">
+      <UniqueIdentifier>{a99b47a5-3f78-4c14-b54d-e8a46d4c120d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Time">
+      <UniqueIdentifier>{3630e3ae-0ca4-4288-9fa3-377822f3547e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Container\Post Effect Containers">
+      <UniqueIdentifier>{98bb610e-56f8-44e2-8add-49a964786afb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render\Post Effects">
+      <UniqueIdentifier>{a81c48c2-aee2-4e31-9afc-42a44bb9802e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AspectInterface.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="Containers.cpp">
+      <Filter>Source Files\Container</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="MainState.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageSystem.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerInterface.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderClass.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="WinTimer.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="DeferredRenderingAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="Object2DAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="Container.cpp">
+      <Filter>Source Files\Container</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvironmentAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCamAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="Debugger.cpp">
+      <Filter>Source Files\System\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>Source Files\System\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemQueries.cpp">
+      <Filter>Source Files\System\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderDebug.cpp">
+      <Filter>Source Files\System\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugDomain.cpp">
+      <Filter>Source Files\System\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleInterface.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="SandStorm.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleplayerAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiplayerAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleParticleSystem.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="WindParticles.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="SkysphereAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugCamAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="SRVDebug.cpp">
+      <Filter>Source Files\System\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="Atmosphere.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyDome.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraQueries.cpp">
+      <Filter>Source Files\System\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="ReaderINI.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="CascadeShadow.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="NonaNode.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="CullingNode.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="DetailNode.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="ForestBiom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseBiom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwampBiom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyParticle.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="GrassNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CelestialBodies.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PostEffectsAspect.cpp">
+      <Filter>Source Files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="AtmosphereContainer.cpp">
+      <Filter>Source Files\Container\Post Effect Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="RainSimContainer.cpp">
+      <Filter>Source Files\Container\Post Effect Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="FogContainer.cpp">
+      <Filter>Source Files\Container\Post Effect Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="CloudPostEffect.cpp">
+      <Filter>Source Files\Render\Post Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="FogPostEffect.cpp">
+      <Filter>Source Files\Render\Post Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="PostEffect.cpp">
+      <Filter>Source Files\Render\Post Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="RainPostEffect.cpp">
+      <Filter>Source Files\Render\Post Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="ShimmerPostEffect.cpp">
+      <Filter>Source Files\Render\Post Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleEffect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundDebug.cpp">
+      <Filter>Source Files\System\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerContainer.cpp">
+      <Filter>Source Files\Container</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AspectInterface.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="MainState.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageSystem.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ExampleContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoFunction.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="DeferredRenderingAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Renderer\RenderFactory.h">
+      <Filter>Header Files\Render\DLL Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WanInput\WanInput\InputFactory.h">
+      <Filter>Header Files\Input\DLL Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WanInput\WanInput\InputInterface.h">
+      <Filter>Header Files\Input\DLL Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Renderer\RenderInterface.h">
+      <Filter>Header Files\Render\DLL Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Object2DContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Object2DAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="FontContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="DetailLayerContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Header Files\System\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="Debugger.h">
+      <Filter>Header Files\System\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="TextUtility.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderDebug.h">
+      <Filter>Header Files\System\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugDomain.h">
+      <Filter>Header Files\System\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="GameplayVariables.h">
+      <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleInterface.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="SandStorm.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="WindContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="AspectCollection.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiplayerAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleplayerAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleParticleSystem.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="WindParticles.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="SkysphereAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCamAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugCamAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="SRVDebug.h">
+      <Filter>Header Files\System\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="Atmosphere.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyDome.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="TestAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_INI.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemQueries.h">
+      <Filter>Header Files\System\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="ReaderINI.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderClass.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="CascadeShadow.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="BiomsContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="NonaNode.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="CullingNode.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="DetailNode.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ModelLoader\ModelLoaderFactory.h">
+      <Filter>Header Files\ModelLoader\DLL Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ModelLoader\ModelLoaderInterface.h">
+      <Filter>Header Files\ModelLoader\DLL Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBufferContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraQueries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ForestContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ForestBiom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseBiom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwampBiom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraQueries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraQueries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyParticle.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraQueries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrassNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraQueries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CelestialBodies.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraQueries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Atmosphere.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="CloudPostEffect.h">
+      <Filter>Header Files\Render\Post Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="FogPostEffect.h">
+      <Filter>Header Files\Render\Post Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="PostEffect.h">
+      <Filter>Header Files\Render\Post Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="RainPostEffect.h">
+      <Filter>Header Files\Render\Post Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="ShimmerPostEffect.h">
+      <Filter>Header Files\Render\Post Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="RainSimContainer.h">
+      <Filter>Header Files\Container\Post Effect Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="FogContainer.h">
+      <Filter>Header Files\Container\Post Effect Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="AtmosphereContainer.h">
+      <Filter>Header Files\Container\Post Effect Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderClass.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadowContainer.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="ReaderINI.h">
+      <Filter>Header Files\System\INI</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_INI.h">
+      <Filter>Header Files\System\INI</Filter>
+    </ClInclude>
+    <ClInclude Include="WinTimer.h">
+      <Filter>Header Files\System\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerInterface.h">
+      <Filter>Header Files\System\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="PostEffectsAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_PostEffect.h">
+      <Filter>Header Files\Render\Post Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEffectContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerDrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraQueries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraQueries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundDebug.h">
+      <Filter>Header Files\System\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraQueries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Container.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvironmentAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAspect.h">
+      <Filter>Header Files\Aspect</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="SandStormContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleContainer.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

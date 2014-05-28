@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1416047A-9CE4-4868-8B0A-B988B6344309}</ProjectGuid>
+    <RootNamespace>StortSpelprojekt</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SourcePath)</SourcePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)ModelLoader;$(SolutionDir)Renderer;$(SolutionDir)WanInput;$(SolutionDir)\include;$(SolutionDir)lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BrowseInformation>true</BrowseInformation>
+      <EnablePREfast>false</EnablePREfast>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ModelLoader.lib;Renderer.lib;WanInput.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Profile>true</Profile>
+    </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)ModelLoader;$(SolutionDir)Renderer;$(SolutionDir)WanInput;$(SolutionDir)\include;$(SolutionDir)lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <EnablePREfast>false</EnablePREfast>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ModelLoader.lib;Renderer.lib;WanInput.lib;fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <Profile>true</Profile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AspectInterface.cpp" />
+    <ClCompile Include="Atmosphere.cpp" />
+    <ClCompile Include="AtmosphereContainer.cpp" />
+    <ClCompile Include="BaseBiom.cpp" />
+    <ClCompile Include="CameraQueries.cpp" />
+    <ClCompile Include="CascadeShadow.cpp" />
+    <ClCompile Include="CloudPostEffect.cpp" />
+    <ClCompile Include="CelestialBodies.cpp" />
+    <ClCompile Include="Console.cpp" />
+    <ClCompile Include="Container.cpp" />
+    <ClCompile Include="Containers.cpp" />
+    <ClCompile Include="CullingNode.cpp" />
+    <ClCompile Include="DebugCamAspect.cpp" />
+    <ClCompile Include="DebugDomain.cpp" />
+    <ClCompile Include="Debugger.cpp" />
+    <ClCompile Include="DeferredRenderingAspect.cpp" />
+    <ClCompile Include="DetailNode.cpp" />
+    <ClCompile Include="EnemyAspect.cpp" />
+    <ClCompile Include="EnergyParticle.cpp" />
+    <ClCompile Include="FogContainer.cpp" />
+    <ClCompile Include="FogPostEffect.cpp" />
+    <ClCompile Include="ForestBiom.cpp" />
+    <ClCompile Include="GameSettings.cpp" />
+    <ClCompile Include="PlayerDrain.cpp" />
+    <ClCompile Include="ShimmerPostEffect.cpp" />
+    <ClCompile Include="GrassNode.cpp" />
+    <ClCompile Include="ParticleEffect.cpp" />
+    <ClCompile Include="PlayerContainer.cpp" />
+    <ClCompile Include="SoundDebug.cpp" />
+    <ClCompile Include="SoundEngine.cpp" />
+    <ClCompile Include="SwampBiom.cpp" />
+    <ClCompile Include="TerrainAspect.cpp" />
+    <ClCompile Include="EnvironmentAspect.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainState.cpp" />
+    <ClCompile Include="MessageSystem.cpp" />
+    <ClCompile Include="MultiplayerAspect.cpp" />
+    <ClCompile Include="Object2DAspect.cpp" />
+    <ClCompile Include="ParticleAspect.cpp" />
+    <ClCompile Include="PostEffect.cpp" />
+    <ClCompile Include="PostEffectsAspect.cpp" />
+    <ClCompile Include="RainPostEffect.cpp" />
+    <ClCompile Include="RainSimContainer.cpp" />
+    <ClCompile Include="NonaNode.cpp" />
+    <ClCompile Include="ReaderINI.cpp" />
+    <ClCompile Include="SandStorm.cpp" />
+    <ClCompile Include="ParticleInterface.cpp" />
+    <ClCompile Include="PlayerAspect.cpp" />
+    <ClCompile Include="PlayerCamAspect.cpp" />
+    <ClCompile Include="RenderDebug.cpp" />
+    <ClCompile Include="ShaderClass.cpp" />
+    <ClCompile Include="SingleplayerAspect.cpp" />
+    <ClCompile Include="SkyAspect.cpp" />
+    <ClCompile Include="SkyDome.cpp" />
+    <ClCompile Include="SkysphereAspect.cpp" />
+    <ClCompile Include="SRVDebug.cpp" />
+    <ClCompile Include="SystemQueries.cpp" />
+    <ClCompile Include="SimpleParticleSystem.cpp" />
+    <ClCompile Include="TimerInterface.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WindParticles.cpp" />
+    <ClCompile Include="WinTimer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ModelLoader\ModelLoaderFactory.h" />
+    <ClInclude Include="..\ModelLoader\ModelLoaderInterface.h" />
+    <ClInclude Include="..\Renderer\RenderFactory.h" />
+    <ClInclude Include="..\Renderer\RenderInterface.h" />
+    <ClInclude Include="..\WanInput\WanInput\InputFactory.h" />
+    <ClInclude Include="..\WanInput\WanInput\InputInterface.h" />
+    <ClInclude Include="AspectCollection.h" />
+    <ClInclude Include="AspectInterface.h" />
+    <ClInclude Include="Atmosphere.h" />
+    <ClInclude Include="AtmosphereContainer.h" />
+    <ClInclude Include="BaseBiom.h" />
+    <ClInclude Include="CascadeShadow.h" />
+    <ClInclude Include="CloudPostEffect.h" />
+    <ClInclude Include="CelestialBodies.h" />
+    <ClInclude Include="BiomsContainer.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="Console.h" />
+    <ClInclude Include="CameraContainer.h" />
+    <ClInclude Include="ConstantBufferContainer.h" />
+    <ClInclude Include="Container.h" />
+    <ClInclude Include="Containers.h" />
+    <ClInclude Include="CullingNode.h" />
+    <ClInclude Include="DebugCamAspect.h" />
+    <ClInclude Include="DebugDomain.h" />
+    <ClInclude Include="Debugger.h" />
+    <ClInclude Include="DeferredRenderingAspect.h" />
+    <ClInclude Include="DetailLayerContainer.h" />
+    <ClInclude Include="DetailNode.h" />
+    <ClInclude Include="EnemyAspect.h" />
+    <ClInclude Include="EnemyContainer.h" />
+    <ClInclude Include="EnergyParticle.h" />
+    <ClInclude Include="FogContainer.h" />
+    <ClInclude Include="FogPostEffect.h" />
+    <ClInclude Include="GameSettings.h" />
+    <ClInclude Include="GrassNode.h" />
+    <ClInclude Include="ParticleEffect.h" />
+    <ClInclude Include="ParticleEffectContainer.h" />
+    <ClInclude Include="PlayerDrain.h" />
+    <ClInclude Include="ShadowContainer.h" />
+    <ClInclude Include="ForestBiom.h" />
+    <ClInclude Include="ForestContainer.h" />
+    <ClInclude Include="ShimmerPostEffect.h" />
+    <ClInclude Include="SoundDebug.h" />
+    <ClInclude Include="SoundEngine.h" />
+    <ClInclude Include="SwampBiom.h" />
+    <ClInclude Include="TerrainAspect.h" />
+    <ClInclude Include="EnvironmentAspect.h" />
+    <ClInclude Include="ExampleContainer.h" />
+    <ClInclude Include="FontContainer.h" />
+    <ClInclude Include="InfoFunction.h" />
+    <ClInclude Include="MainState.h" />
+    <ClInclude Include="MessageSystem.h" />
+    <ClInclude Include="GameplayVariables.h" />
+    <ClInclude Include="MultiplayerAspect.h" />
+    <ClInclude Include="NetworkAspect.h" />
+    <ClInclude Include="Object2DAspect.h" />
+    <ClInclude Include="Object2DContainer.h" />
+    <ClInclude Include="PostEffect.h" />
+    <ClInclude Include="PostEffectsAspect.h" />
+    <ClInclude Include="RainPostEffect.h" />
+    <ClInclude Include="RainSimContainer.h" />
+    <ClInclude Include="NonaNode.h" />
+    <ClInclude Include="ReaderINI.h" />
+    <ClInclude Include="RenderDebug.h" />
+    <ClInclude Include="ParticleAspect.h" />
+    <ClInclude Include="SandStorm.h" />
+    <ClInclude Include="ParticleContainer.h" />
+    <ClInclude Include="ParticleInterface.h" />
+    <ClInclude Include="SandStormContainer.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SingleplayerAspect.h" />
+    <ClInclude Include="SkyAspect.h" />
+    <ClInclude Include="SkyDome.h" />
+    <ClInclude Include="SourceContainer.h" />
+    <ClInclude Include="SRVDebug.h" />
+    <ClInclude Include="SkysphereAspect.h" />
+    <ClInclude Include="ShaderClass.h" />
+    <ClInclude Include="SimpleParticleSystem.h" />
+    <ClInclude Include="SystemQueries.h" />
+    <ClInclude Include="TestAspect.h" />
+    <ClInclude Include="TextContainer.h" />
+    <ClInclude Include="PlayerAspect.h" />
+    <ClInclude Include="PlayerCamAspect.h" />
+    <ClInclude Include="PlayerContainer.h" />
+    <ClInclude Include="TerrainContainer.h" />
+    <ClInclude Include="TextUtility.h" />
+    <ClInclude Include="TimerInterface.h" />
+    <ClInclude Include="Utility.h" />
+    <ClInclude Include="Utility_INI.h" />
+    <ClInclude Include="Utility_PostEffect.h" />
+    <ClInclude Include="WindContainer.h" />
+    <ClInclude Include="Window.h" />
+    <ClInclude Include="WindParticles.h" />
+    <ClInclude Include="WinTimer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Renderer\Renderer.vcxproj">
+      <Project>{0dc99bf1-a46c-49af-84d0-eb4f2439804e}</Project>
+      <Private>true</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+    <ProjectReference Include="..\WanInput\WanInput\WanInput.vcxproj">
+      <Project>{b0a64dbf-d1da-4601-be44-0d231838df50}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
