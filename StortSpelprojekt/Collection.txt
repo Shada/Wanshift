@@ -1,0 +1,7 @@
+[Settings]
+default
+user
+debug
+
+[Game]
+sky

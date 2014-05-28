@@ -1,0 +1,199 @@
+*.vcxproj
+*.filters
+*.tlog
+*.lastbuildstate
+*.ipch
+*.idb
+*.sdf
+*.opensdf
+*.suo
+*.obj
+*.exe
+*.ilk
+*.pdb
+*.log
+*.cso
+*.exp
+*.unsuccessfulbuild
+*.lastcodeanalysissucceeded
+*.bsc
+*.sbr
+*.xml
+
+#lib/Renderer.dll
+#lib/Renderer.lib
+#lib/WanInput.lib
+#lib/WanInput.dll
+Server/Server admin interface/obj/Debug/TemporaryGeneratedFile*.cs
+*TemporaryGeneratedFile*.cs
+lib/Renderer.dll
+lib/Renderer.lib
+lib/WanInput.dll
+lib/WanInput.lib
+Server/Debug/ComLIB.lib
+Server/Debug/LogLIB.lib
+Server/Debug/SQLManage.lib
+Server/Debug/ThreadSafeContainersLIB.lib
+Server/Debug/ClientDLL.dll
+Server/Debug/ClientDLL.lib
+Server/Debug/LogLIB.lib
+*TemporaryGeneratedFile*
+*.codeanalysis
+*.xml
+*.lastcodeanalysissucceeded
+*.codeanalysisast
+*.orig
+lib/ModelLoader.dll
+lib/ModelLoader.lib
+*.pch
+Renderer/Debug/Renderer.res
+Renderer/Release/Renderer.res
+Renderer/Renderer.rc
+Renderer/resource1.h
+Server/ComLIB/Release/ComLIB.res
+Server/Server admin interface/bin/Debug/Server admin interface.vshost.exe.manifest
+StortSpelprojekt/BasicParticle.cpp
+StortSpelprojekt/BasicParticle.h
+StortSpelprojekt/Init/WorldVariables - Kopia.ini
+StortSpelprojekt/Init/WorldVariables - NULL.ini
+StortSpelprojekt/Models/119498958977780800stop_sign_right_font_mig_.svg.med.png
+StortSpelprojekt/Models/Candycane.fbx
+StortSpelprojekt/Models/Exported.rar
+StortSpelprojekt/Models/Exported/Character_Diff.png
+StortSpelprojekt/Models/Exported/Character_Glow.png
+StortSpelprojekt/Models/Exported/Character_NM.png
+StortSpelprojekt/Models/Exported/DummyAnimation.fbx
+StortSpelprojekt/Models/Exported/TestRender.jpg
+StortSpelprojekt/Models/Exported/animationDummy.mp4
+StortSpelprojekt/Models/Makoto Aihara gi default/0200armL.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200armL_am.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200armR.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200armR_am.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200body.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200body_sm.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200bra.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200bra_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200eri.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200eri_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200eyeb.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200eyeb_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200face.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200face_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200foot.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200foot_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200himb.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200himo_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200himr.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200km_a.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200km_a_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200km_b.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200km_b_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200km_c.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200km_c_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200legL.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200legL_tm.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200legR.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200legR_tm.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200lp01.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200lp01_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200me.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200me_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200me_r.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200oma.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200oma_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200oral.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200oral_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200pan.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200pan_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200ribo.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200ribo_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200span.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200span_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200tape.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200tape_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200warm.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200warm_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200wear.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/0200wear_n.dds
+StortSpelprojekt/Models/Makoto Aihara gi default/gi.FBX
+StortSpelprojekt/Models/Rock1.fbx
+StortSpelprojekt/Models/StopSign.fbx
+StortSpelprojekt/Models/Talia.fbm/Eye_Brown3.jpg
+StortSpelprojekt/Models/Talia.fbm/Talia_Body_D.jpg
+StortSpelprojekt/Models/Talia.fbm/Talia_Body_N.jpg
+StortSpelprojekt/Models/Talia.fbm/Talia_Hair_D.jpg
+StortSpelprojekt/Models/Talia.fbm/Talia_Hair_N.jpg
+StortSpelprojekt/Models/Talia.fbm/Talia_Head_D.jpg
+StortSpelprojekt/Models/Talia.fbm/Talia_Head_N.jpg
+StortSpelprojekt/Models/Talia.fbm/Talia_Legs_D.jpg
+StortSpelprojekt/Models/Talia.fbm/Talia_Legs_N.jpg
+StortSpelprojekt/Models/Talia.fbm/Weapons_Ninja_Sword_D.jpg
+StortSpelprojekt/Models/Talia.fbm/Weapons_Ninja_Sword_N.jpg
+StortSpelprojekt/Models/Talia.fbx
+StortSpelprojekt/Models/cone.fbx
+StortSpelprojekt/Models/defaultEmissive.png
+StortSpelprojekt/Models/ellie/3D_Model/Ellie.3DS
+StortSpelprojekt/Models/ellie/3D_Model/Ellie.FBX
+StortSpelprojekt/Models/ellie/3D_Model/Ellie.max
+StortSpelprojekt/Models/ellie/Ellie.png
+StortSpelprojekt/Models/ellie/Textures/Upper_Bump.dds
+StortSpelprojekt/Models/ellie/Textures/Upper_Specular.dds
+StortSpelprojekt/Models/ellie/Textures/Uppr_diffuse.dds
+StortSpelprojekt/Models/ellie/Textures/hair_bump.dds
+StortSpelprojekt/Models/ellie/Textures/hair_diffuse.dds
+StortSpelprojekt/Models/ellie/Textures/hair_specular.dds
+StortSpelprojekt/Models/ellie/Textures/hands_bump.dds
+StortSpelprojekt/Models/ellie/Textures/hands_diffuse.dds
+StortSpelprojekt/Models/ellie/Textures/hands_specular.dds
+StortSpelprojekt/Models/ellie/Textures/head_diffuse.dds
+StortSpelprojekt/Models/ellie/Textures/teeth_diffuse.dds
+StortSpelprojekt/Models/ellie/Textures/trousers_bump.dds
+StortSpelprojekt/Models/ellie/Textures/trousers_diffuse.dds
+StortSpelprojekt/Models/ellie/Textures/trousers_specular.dds
+StortSpelprojekt/Models/legoBrick.fbx
+StortSpelprojekt/Models/minimon for upload.fbx
+StortSpelprojekt/Models/npcdiff.png
+StortSpelprojekt/Models/npcglow.png
+StortSpelprojekt/Models/redwood3.fbx
+StortSpelprojekt/Models/redwoodTree2.fbx
+StortSpelprojekt/Models/saladfingers.FBX
+StortSpelprojekt/Models/sphere.fbx
+StortSpelprojekt/Models/tex/Eye_Brown3.jpg
+StortSpelprojekt/Models/tex/Talia_Body_A.jpg
+StortSpelprojekt/Models/tex/Talia_Body_D.jpg
+StortSpelprojekt/Models/tex/Talia_Body_N.jpg
+StortSpelprojekt/Models/tex/Talia_Hair_A.jpg
+StortSpelprojekt/Models/tex/Talia_Hair_D.jpg
+StortSpelprojekt/Models/tex/Talia_Hair_N.jpg
+StortSpelprojekt/Models/tex/Talia_Head_D.jpg
+StortSpelprojekt/Models/tex/Talia_Head_N.jpg
+StortSpelprojekt/Models/tex/Talia_Legs_D.jpg
+StortSpelprojekt/Models/tex/Talia_Legs_N.jpg
+StortSpelprojekt/Models/tex/Weapons_Ninja_Sword_D.jpg
+StortSpelprojekt/Models/tex/Weapons_Ninja_Sword_N.jpg
+StortSpelprojekt/Models/tree/ConiferBark.tga
+StortSpelprojekt/Models/tree/ConiferBark_Normal.tga
+StortSpelprojekt/Models/tree/PalmBark.tga
+StortSpelprojekt/Models/tree/PalmBark_Normal.tga
+StortSpelprojekt/Models/tree/SampleLeaves_1.tga
+StortSpelprojekt/Models/tree/SampleLeaves_1_Normal.tga
+StortSpelprojekt/Models/tree/SampleLeaves_1_Spec.tga
+StortSpelprojekt/Models/tree/tree.fbx
+StortSpelprojekt/Models/tree/treeplan1.fbx
+StortSpelprojekt/Sounds/ambient.wav
+StortSpelprojekt/Textures/1166926620.jpg
+StortSpelprojekt/Textures/grass.jpg
+StortSpelprojekt/Textures/grass.png
+StortSpelprojekt/Textures/grass1.jpg
+StortSpelprojekt/Textures/grassbill.png
+StortSpelprojekt/Textures/grassdry.png
+StortSpelprojekt/Textures/grassorg.png
+StortSpelprojekt/Textures/grasssmall.png
+StortSpelprojekt/Textures/rickard.png
+StortSpelprojekt/Textures/sand_texture1.jpg
+StortSpelprojekt/Textures/skit.png
+StortSpelprojekt/Textures/star.jpg
+StortSpelprojekt/Textures/star.png
+StortSpelprojekt/Textures/star.xcf
+StortSpelprojekt/Textures/starsmall.png
+StortSpelprojekt/Textures/stefan.png

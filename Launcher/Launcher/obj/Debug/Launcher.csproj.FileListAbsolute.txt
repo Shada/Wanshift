@@ -1,0 +1,13 @@
+D:\SourceTree\WanShift\Launcher\Launcher\obj\Debug\Launcher.Launcher.resources
+D:\SourceTree\WanShift\Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.Cache
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Debug\close.png
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Debug\close_down.png
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Debug\Launch_down.png
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Debug\Launch.png
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Debug\grass.jpg
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Debug\Launcher.exe.config
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Debug\Launcher.exe
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Debug\Launcher.pdb
+D:\SourceTree\WanShift\Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
+D:\SourceTree\WanShift\Launcher\Launcher\obj\Debug\Launcher.exe
+D:\SourceTree\WanShift\Launcher\Launcher\obj\Debug\Launcher.pdb

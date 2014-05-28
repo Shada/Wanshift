@@ -1,0 +1,1103 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  <Product Name='WanShift' Id='*' UpgradeCode='E5DA6232-D6C1-4680-8C8E-FF7D49B77264'
+    Language='1033' Codepage='1252' Version='0.0.1' Manufacturer='WanShift Group'>
+
+    <Package Id='*' Keywords='Installer'
+      Description="WanShift Installer"
+      Comments='WanShift is a Product created by WanShift Group' Manufacturer='WanShift Group'
+      InstallerVersion='100' Languages='1033' Compressed='yes' SummaryCodepage='1252' />
+
+    <Media Id='1' Cabinet='Content.cab' EmbedCab='yes' DiskPrompt="CD-ROM #1" />
+	
+    <Property Id='DiskPrompt' Value="WanShift's Installation [1]" />
+	<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+
+
+    <Directory Id='TARGETDIR' Name='SourceDir'>	 
+
+      <Directory Id="AppDataFolder" Name="ADFolder">
+        <Directory Id="WanShiftAppData" Name="WanShift">
+          <Component Id="WanShiftAppData" Guid="*">
+            <RemoveFolder Id='WanShiftAppData' On='uninstall' />
+            <RegistryValue Root='HKCU' Key='WanShiftAppData\[Manufacturer]\[ProductName]' Type='string' Value='' KeyPath='yes' />
+          </Component>
+          <Component Id='UserInitAppData' Guid='0D9405CF-CC8A-47D6-9DB5-8F65077C5408'>
+            <RegistryValue Root='HKCU' Key='WanShiftAppData\[Manufacturer]\[ProductName]' Type='string' Value='' KeyPath='yes' />
+            <File Id='UserADINI' Name='user.ini' DiskId='1' Source='..\StortSpelprojekt\Init\user.ini' />
+          </Component>
+        </Directory>	
+      </Directory>
+	  
+      <Directory Id='WindowsVolume' Name='PFiles'>
+        <Directory Id='WanShift' Name='WanShift'>
+          <Directory Id='INSTALLDIR' Name='WanShift'>
+			
+			<!-- The Launcher -->
+			<Component Id='LauncherExecutable' Guid='*'>
+			  <File Id='LauncherEXE' Name='WanShiftLauncher.exe' DiskId='1' Source='..\Launcher\Launcher\bin\Release\Launcher.exe' KeyPath='yes' >
+				<Shortcut Id="startmenuWanShift" Directory="ProgramMenuDir" Name="WanShift" WorkingDirectory='INSTALLDIR' Icon="WanShift.exe" IconIndex="0" Advertise="yes" />
+                <Shortcut Id="desktopWanShift" Directory="DesktopFolder" Name="WanShift" WorkingDirectory='INSTALLDIR' Icon="WanShift.exe" IconIndex="0" Advertise="yes" />
+			  </File>
+			</Component>
+			
+			<!-- The executable -->
+            <Component Id='MainExecutable' Guid='*'>
+              <File Id='WanShiftEXE' Name='WanShift.exe' DiskId='1' Source='..\Release\StortSpelprojekt.exe' KeyPath='yes' />
+            </Component>
+			
+			<!-- The ICP client -->
+            <Component Id='ClientIPCExecutable' Guid='*'>
+              <File Id='ClientIPCEXE' Name='ClientIPC.exe' DiskId='1' Source='..\Server\Release\ClientIPC.exe' KeyPath='yes' />
+            </Component>
+
+			<!-- Helper Libraries -->
+            <Component Id='RendererLibrary' Guid='*'>
+              <File Id='RendererDLL' Name='Renderer.dll' DiskId='1' Source='..\lib\Renderer.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='WanInputLibrary' Guid='*'>
+              <File Id='WanInputDLL' Name='WanInput.dll' DiskId='1' Source='..\lib\WanInput.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='ModelLoaderLibrary' Guid='*'>
+              <File Id='ModelLoaderDLL' Name='ModelLoader.dll' DiskId='1' Source='..\lib\ModelLoader.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='d3dcompiler_46Library' Guid='*'>
+              <File Id='d3dcompiler_46DLL' Name='d3dcompiler_46.dll' DiskId='1' Source='C:\Program Files (x86)\Windows Kits\8.0\Redist\D3D\x86\d3dcompiler_46.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='D3Dcompiler_47Library' Guid='*'>
+              <File Id='D3Dcompiler_47DLL' Name='D3Dcompiler_47.dll' DiskId='1' Source='C:\Windows\System32\D3Dcompiler_47.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='d3dx11_43Library' Guid='*'>
+              <File Id='d3dx11_43DLL' Name='d3dx11_43.dll' DiskId='1' Source='C:\Windows\System32\d3dx11_43.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincorelibraryloaderl120Library' Guid='*'>
+              <File Id='apimswincorelibraryloaderl120DLL' Name='api-ms-win-core-libraryloader-l1-2-0.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-libraryloader-l1-2-0.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincoreerrorhandlingl111Library' Guid='*'>
+              <File Id='apimswincoreerrorhandlingl111DLL' Name='api-ms-win-core-errorhandling-l1-1-1.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-errorhandling-l1-1-1.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincorefilel121Library' Guid='*'>
+              <File Id='apimswincorefilel121DLL' Name='api-ms-win-core-file-l1-2-1.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-file-l1-2-1.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincorefilel211Library' Guid='*'>
+              <File Id='apimswincorefilel211DLL' Name='api-ms-win-core-file-l2-1-1.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-file-l2-1-1.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincoredebugl111Library' Guid='*'>
+              <File Id='apimswincoredebugl111DLL' Name='api-ms-win-core-debug-l1-1-1.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-debug-l1-1-1.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincoreregistryl110Library' Guid='*'>
+              <File Id='apimswincoreregistryl110DLL' Name='api-ms-win-core-registry-l1-1-0.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-registry-l1-1-0.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincoreheapl120Library' Guid='*'>
+              <File Id='apimswincoreheapl120DLL' Name='api-ms-win-core-heap-l1-2-0.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-heap-l1-2-0.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincoresynchl120Library' Guid='*'>
+              <File Id='apimswincoresynchl120DLL' Name='api-ms-win-core-synch-l1-2-0.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-synch-l1-2-0.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincoreprocessthreadsl112Library' Guid='*'>
+              <File Id='apimswincoreprocessthreadsl112DLL' Name='api-ms-win-core-processthreads-l1-1-2.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-processthreads-l1-1-2.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincoreprocessenvironmentl120Library' Guid='*'>
+              <File Id='apimswincoreprocessenvironmentl120DLL' Name='api-ms-win-core-processenvironment-l1-2-0.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-processenvironment-l1-2-0.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincorememoryl112Library' Guid='*'>
+              <File Id='apimswincorememoryl112DLL' Name='api-ms-win-core-memory-l1-1-2.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-memory-l1-1-2.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincoresysinfol121Library' Guid='*'>
+              <File Id='apimswincoresysinfol121DLL' Name='api-ms-win-core-sysinfo-l1-2-1.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-sysinfo-l1-2-1.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincoreinterlockedl120Library' Guid='*'>
+              <File Id='apimswincoreinterlockedl120DLL' Name='api-ms-win-core-interlocked-l1-2-0.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-interlocked-l1-2-0.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincorelocalizationl121Library' Guid='*'>
+              <File Id='apimswincorelocalizationl121DLL' Name='api-ms-win-core-localization-l1-2-1.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-localization-l1-2-1.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincoreiol111Library' Guid='*'>
+              <File Id='apimswincoreiol111DLL' Name='api-ms-win-core-io-l1-1-1.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-io-l1-1-1.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincorestringobsoletel110Library' Guid='*'>
+              <File Id='apimswincorestringobsoletel110DLL' Name='api-ms-win-core-string-obsolete-l1-1-0.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-string-obsolete-l1-1-0.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='apimswincoreheapobsoletel110Library' Guid='*'>
+              <File Id='apimswincoreheapobsoletel110DLL' Name='api-ms-win-core-heap-obsolete-l1-1-0.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-heap-obsolete-l1-1-0.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='MSVCP120Library' Guid='*'>
+              <File Id='msvcp120DLL' Name='msvcp120.dll' DiskId='1' Source='C:\Windows\System32\msvcp120.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='MSVCR120Library' Guid='*'>
+              <File Id='msvcr120DLL' Name='msvcr120.dll' DiskId='1' Source='C:\Windows\System32\msvcr120.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='FmodLibrary' Guid='*'>
+              <File Id='fmodDLL' Name='fmod.dll' DiskId='1' Source='..\lib\fmod.dll' KeyPath='yes' />
+            </Component>
+			
+			<Component Id='ClientLibrary' Guid='*'>
+              <File Id='ClientDLL' Name='ClientDLL.dll' DiskId='1' Source='..\Server\Release\ClientDLL.dll' KeyPath='yes' />
+            </Component>
+
+			<!-- Manual -->
+            <Component Id='Manual' Guid='*'>
+              <File Id='Manual' Name='README.txt' DiskId='1' Source='..\README.txt' KeyPath='yes'>
+                <Shortcut Id="startmenuManual" Directory="ProgramMenuDir" Name="Instruction Manual" Advertise="yes" />
+              </File>
+            </Component>
+			
+			<!-- Init Files -->
+			<Directory Id='InitFiles' Name='Init'>
+			  <Component Id='CollectionInit' Guid='*'>
+			    <File Id='CollectionTXT' Name='Collection.txt' DiskId='1' Source='..\StortSpelprojekt\Init\Collection.txt' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DebugInit' Guid='*'>
+			    <File Id='debugINI' Name='debug.ini' DiskId='1' Source='..\StortSpelprojekt\Init\debug.ini' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DefaultInit' Guid='*'>
+			    <File Id='defaultINI' Name='default.ini' DiskId='1' Source='..\StortSpelprojekt\Init\default.ini' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SkyInit' Guid='*'>
+			    <File Id='skyINI' Name='sky.ini' DiskId='1' Source='..\StortSpelprojekt\Init\sky.ini' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='TexturesInit' Guid='*'>
+			    <File Id='texturesINI' Name='textures.ini' DiskId='1' Source='..\StortSpelprojekt\Init\textures.ini' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='WorldVariablesInit' Guid='*'>
+			    <File Id='worldVariablesINI' Name='WorldVariables.ini' DiskId='1' Source='..\StortSpelprojekt\Init\WorldVariables.ini' KeyPath='yes' />
+			  </Component>
+			  
+			</Directory>
+			
+			<!-- Font Files -->
+			<Directory Id='FontFiles' Name='Fonts'>
+			
+			  <Component Id='MyriadProFont' Guid='*'>
+			    <File Id='MyriadProPNG' Name='Myriad-Pro.png' DiskId='1' Source='..\StortSpelprojekt\Fonts\Myriad-Pro.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='MyriadProFontDesc' Guid='*'>
+			    <File Id='MyriadProTXT' Name='Myriad-Pro.txt' DiskId='1' Source='..\StortSpelprojekt\Fonts\Myriad-Pro.txt' KeyPath='yes' />
+			  </Component>
+			  
+			</Directory>
+			
+			<!-- Sound Files -->
+			
+			<Directory Id='SoundFiles' Name='Sounds'>
+			  <Directory Id='MusicFolder' Name='Music'>
+			  
+				<Component Id='DesertSound' Guid='*'>
+			      <File Id='desertMP3' Name='desert.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Music\desert.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='ForestSound' Guid='*'>
+			      <File Id='forestMP3' Name='forest.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Music\forest.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='MeadowsSound' Guid='*'>
+			      <File Id='meadowsMP3' Name='meadows.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Music\meadows.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='MountainsSound' Guid='*'>
+			      <File Id='mountainsMP3' Name='mountains.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Music\mountains.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='SwampSound' Guid='*'>
+			      <File Id='swampMP3' Name='swamp.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Music\swamp.mp3' KeyPath='yes' />
+			    </Component>
+				
+			  </Directory>
+			  <Directory Id='SoundsFolder' Name='Sounds'>
+				
+				<Component Id='AbsorbSound' Guid='*'>
+			      <File Id='absorbMP3' Name='absorb.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Sounds\absorb.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='BiomshiftSound' Guid='*'>
+			      <File Id='biomshiftMP3' Name='biomshift.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Sounds\biomshift.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='BirdsSound' Guid='*'>
+			      <File Id='birdsMP3' Name='birds.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Sounds\birds.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='BongSound' Guid='*'>
+			      <File Id='bongMP3' Name='bong.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Sounds\bong.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='EnergySourceSound' Guid='*'>
+			      <File Id='energySourceMP3' Name='energySource.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Sounds\energySource.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='GhostSound' Guid='*'>
+			      <File Id='ghostMP3' Name='ghost.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Sounds\ghost.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='NPC_AngrySound' Guid='*'>
+			      <File Id='NPC_angryMP3' Name='NPC_angry.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Sounds\NPC_angry.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='NPC_IdleSound' Guid='*'>
+			      <File Id='NPC_IdleMP3' Name='NPC_Idle.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Sounds\NPC_Idle.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='Orb1Sound' Guid='*'>
+			      <File Id='orb1MP3' Name='orb1.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Sounds\orb1.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='Orb2Sound' Guid='*'>
+			      <File Id='orb2MP3' Name='orb2.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Sounds\orb2.mp3' KeyPath='yes' />
+			    </Component>
+				
+				<Component Id='WalkingSound' Guid='*'>
+			      <File Id='walkingMP3' Name='walking.mp3' DiskId='1' Source='..\StortSpelprojekt\Sounds\Sounds\walking.mp3' KeyPath='yes' />
+			    </Component>
+				
+			  </Directory>
+			</Directory>
+			
+			<!-- Model Files -->
+			<Directory Id='ModelFiles' Name='Models'>
+			  <Directory Id='PlayerModelFolder' Name='PlayerModel'>
+				<!-- Model Textures -->
+				
+			    <Component Id='CharacterDiffuseTexture' Guid='*'>
+			      <File Id='Character_Diff2PNG' Name='Character_Diff2.png' DiskId='1' Source='..\StortSpelprojekt\Models\PlayerModel\Character_Diff2.png' KeyPath='yes' />
+			    </Component>
+			    <Component Id='CharacterGlowTexture' Guid='*'>
+			      <File Id='Character_GlowPNG' Name='Character_Glow.png' DiskId='1' Source='..\StortSpelprojekt\Models\PlayerModel\Character_Glow.png' KeyPath='yes' />
+			    </Component>
+			    <Component Id='CharacterNormalTexture' Guid='*'>
+			      <File Id='Character_NM2PNG' Name='Character_NM2.png' DiskId='1' Source='..\StortSpelprojekt\Models\PlayerModel\Character_NM2.png' KeyPath='yes' />
+			    </Component>
+			  
+				<Directory Id='AnimationFolder' Name='Animation'>
+				  <Directory Id='BindPoseFolder' Name='BindPose'>
+					<Component Id='BindPoseFBXMesh' Guid='*'>
+					  <File Id='BindPoseFBX' Name='BindPose.fbx' DiskId='1' Source='..\StortSpelprojekt\Models\PlayerModel\Animation\BindPose\BindPose.fbx' KeyPath='yes' />
+					</Component>
+				  </Directory>
+				  
+				  <Directory Id='CyclesFolder' Name='Cycles'>
+					<Directory Id='ExtractEnergyCycleFolder' Name='ExtractEnergyCycle'>
+					  <Component Id='ExtractEnergyCycleFBXAnimation' Guid='*'>
+					    <File Id='ExtractEnergyCycleFBX' Name='ExtractEnergyCycle.fbx' DiskId='1' Source='..\StortSpelprojekt\Models\PlayerModel\Animation\Cycles\ExtractEnergyCycle\ExtractEnergyCycle.fbx' KeyPath='yes' />
+					  </Component>
+					</Directory>
+
+					<Directory Id='IdleCycleFolder' Name='IdleCycle'>
+					  <Component Id='IdleCycleFBXAnimation' Guid='*'>
+					    <File Id='IdleCycleFBX' Name='IdleCycle.fbx' DiskId='1' Source='..\StortSpelprojekt\Models\PlayerModel\Animation\Cycles\IdleCycle\IdleCycle.fbx' KeyPath='yes' />
+					  </Component>
+					</Directory>
+					
+					<Directory Id='RunCycleFolder' Name='RunCycle'>
+					  <Component Id='RunCycleFBXAnimation' Guid='*'>
+					    <File Id='RunCycleFBX' Name='RunCycle.fbx' DiskId='1' Source='..\StortSpelprojekt\Models\PlayerModel\Animation\Cycles\RunCycle\RunCycle.fbx' KeyPath='yes' />
+					  </Component>
+					</Directory>
+				  </Directory>
+				</Directory>
+			  </Directory>
+			  
+			  <Component Id='BranchFBXMesh' Guid='*'>
+			    <File Id='branchFBX' Name='branch.fbx' DiskId='1' Source='..\StortSpelprojekt\Models\branch.fbx' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='RedwoodTreeFBXMesh' Guid='*'>
+			    <File Id='redwoodTree3FBX' Name='redwoodTree3.fbx' DiskId='1' Source='..\StortSpelprojekt\Models\redwoodTree3.fbx' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='RoofFBXMesh' Guid='*'>
+			    <File Id='roofFBX' Name='roof.fbx' DiskId='1' Source='..\StortSpelprojekt\Models\roof.fbx' KeyPath='yes' />
+			  </Component>
+				
+			</Directory>
+			
+			<!-- Texture Files -->
+			<Directory Id='TextureFiles' Name='Textures'>
+			
+			  <Directory Id='WaterTextureFiles' Name='Water'>
+				<Component Id='WaterFoamTexture' Guid='*'>
+			      <File Id='foamJPG' Name='foam.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\Water\foam.jpg' KeyPath='yes' />
+				</Component>
+				<Component Id='WaterHeightmapTexture' Guid='*'>
+			      <File Id='heightmapPNG' Name='heightmap.png' DiskId='1' Source='..\StortSpelprojekt\Textures\Water\heightmap.png' KeyPath='yes' />
+				</Component>
+				<Component Id='WaterNormalmapTexture' Guid='*'>
+			      <File Id='normalmapJPG' Name='normalmap.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\Water\normalmap.jpg' KeyPath='yes' />
+				</Component>
+			  </Directory>
+			  
+			  <Directory Id='WispTextureFiles' Name='Wisp'>
+				<Component Id='WispOrbTexture' Guid='*'>
+			      <File Id='lightOrbPNG' Name='lightOrb.png' DiskId='1' Source='..\StortSpelprojekt\Textures\Wisp\lightOrb.png' KeyPath='yes' />
+				</Component>
+				<Component Id='WispTexture' Guid='*'>
+			      <File Id='wispPNG' Name='wisp.png' DiskId='1' Source='..\StortSpelprojekt\Textures\Wisp\wisp.png' KeyPath='yes' />
+				</Component>
+				<Component Id='Wisp2Texture' Guid='*'>
+			      <File Id='wisp2PNG' Name='wisp2.png' DiskId='1' Source='..\StortSpelprojekt\Textures\Wisp\wisp2.png' KeyPath='yes' />
+				</Component>
+			  </Directory>
+			  
+			  <Component Id='BarkTexture' Guid='*'>
+			    <File Id='barkJPG' Name='bark.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\bark.jpg' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='BarkNormalTexture' Guid='*'>
+			    <File Id='barknormalJPG' Name='barknormal.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\barknormal.jpg' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='BarkSpecularTexture' Guid='*'>
+			    <File Id='barkspecJPG' Name='barkspec.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\barkspec.jpg' KeyPath='yes' />
+			  </Component>
+			
+			  <Component Id='BlackTexture' Guid='*'>
+			    <File Id='blackPNG' Name='black.png' DiskId='1' Source='..\StortSpelprojekt\Textures\black.png' KeyPath='yes' />
+			  </Component>
+			
+			  <Component Id='BranchTexture' Guid='*'>
+			    <File Id='branchPNG' Name='branch.png' DiskId='1' Source='..\StortSpelprojekt\Textures\branch.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='CloudsTexture' Guid='*'>
+			    <File Id='clouds_24DDS' Name='clouds_24.dds' DiskId='1' Source='..\StortSpelprojekt\Textures\clouds_24.dds' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DefaultTexture' Guid='*'>
+			    <File Id='defaultPNG' Name='default.png' DiskId='1' Source='..\StortSpelprojekt\Textures\default.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DemoStarsTexture' Guid='*'>
+			    <File Id='demostarsDDS' Name='demostars.dds' DiskId='1' Source='..\StortSpelprojekt\Textures\demostars.dds' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ForestTexture' Guid='*'>
+			    <File Id='forestBMP' Name='forest.bmp' DiskId='1' Source='..\StortSpelprojekt\Textures\forest.bmp' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='FuzzyBigCircleTexture' Guid='*'>
+			    <File Id='fuzzyBigCircleJPG' Name='fuzzyBigCircle.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\fuzzyBigCircle.jpg' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='FuzzyCircleTexture' Guid='*'>
+			    <File Id='fuzzyCirclePNG' Name='fuzzyCircle.png' DiskId='1' Source='..\StortSpelprojekt\Textures\fuzzyCircle.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='GrassTexture' Guid='*'>
+			    <File Id='grassPNG' Name='grass.png' DiskId='1' Source='..\StortSpelprojekt\Textures\grass.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='GrassBlend2Texture' Guid='*'>
+			    <File Id='grassblend2PNG' Name='grassblend2.png' DiskId='1' Source='..\StortSpelprojekt\Textures\grassblend2.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='GrasskdTexture' Guid='*'>
+			    <File Id='grasskdPNG' Name='grasskd.png' DiskId='1' Source='..\StortSpelprojekt\Textures\grasskd.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='LeafRoofTexture' Guid='*'>
+			    <File Id='leafRoofPNG' Name='leafRoof.png' DiskId='1' Source='..\StortSpelprojekt\Textures\leafRoof.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='Noise3DTexture' Guid='*'>
+			    <File Id='Noise3DDDS' Name='Noise3D.dds' DiskId='1' Source='..\StortSpelprojekt\Textures\Noise3D.dds' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='PlanetCircleTexture' Guid='*'>
+			    <File Id='planetCircleJPG' Name='planetCircle.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\planetCircle.jpg' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='PlanetTex1Texture' Guid='*'>
+			    <File Id='planetTex1JPG' Name='planetTex1.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\planetTex1.jpg' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='PlanetTex2Texture' Guid='*'>
+			    <File Id='planetTex2JPG' Name='planetTex2.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\planetTex2.jpg' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='RainNoiseTexture' Guid='*'>
+			    <File Id='rainNoiseDDS' Name='rainNoise.dds' DiskId='1' Source='..\StortSpelprojekt\Textures\rainNoise.dds' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='RainStreakTexture' Guid='*'>
+			    <File Id='rainStreakDDS' Name='RainStreak.dds' DiskId='1' Source='..\StortSpelprojekt\Textures\RainStreak.dds' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='RockHeightTexture' Guid='*'>
+			    <File Id='rockheightPNG' Name='rockheight.png' DiskId='1' Source='..\StortSpelprojekt\Textures\rockheight.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='Sand_Texture2Texture' Guid='*'>
+			    <File Id='sand_texture2JPG' Name='sand_texture2.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\sand_texture2.jpg' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SeedTexture' Guid='*'>
+			    <File Id='seedPNG' Name='seed.png' DiskId='1' Source='..\StortSpelprojekt\Textures\seed.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='Smoke2Texture' Guid='*'>
+			    <File Id='smoke2PNG' Name='smoke2.png' DiskId='1' Source='..\StortSpelprojekt\Textures\smoke2.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SmokeLowerResTexture' Guid='*'>
+			    <File Id='smokeLowerResPNG' Name='smokeLowerRes.png' DiskId='1' Source='..\StortSpelprojekt\Textures\smokeLowerRes.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SnowStoneTexture' Guid='*'>
+			    <File Id='snowstoneJPG' Name='snowstone.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\snowstone.jpg' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SnowFlakeTexture' Guid='*'>
+			    <File Id='snowflakePNG' Name='snowflake.png' DiskId='1' Source='..\StortSpelprojekt\Textures\snowflake.png' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='StoneTexture' Guid='*'>
+			    <File Id='stoneJPG' Name='stone.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\stone.jpg' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SwampTexture' Guid='*'>
+			    <File Id='swampJPG' Name='swamp.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\swamp.jpg' KeyPath='yes' />
+			  </Component>
+			  
+			</Directory>
+			
+			<!-- Shader Files -->
+			<Directory Id='ShaderFiles' Name='Shaders'>
+			
+			  <Component Id='BlurHorizontalPSShader' Guid='*'>
+			    <File Id='blurHorizontalPSCSO' Name='blurHorizontalPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\blurHorizontalPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='BlurVerticalPSShader' Guid='*'>
+			    <File Id='blurVerticalPSCSO' Name='blurVerticalPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\blurVerticalPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='CelestialDrawVSShader' Guid='*'>
+			    <File Id='CelestialDrawVSCSO' Name='CelestialDrawVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\CelestialDrawVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='CelestialDrawPSShader' Guid='*'>
+			    <File Id='CelestialDrawPSCSO' Name='CelestialDrawPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\CelestialDrawPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='CelestialDrawGSShader' Guid='*'>
+			    <File Id='CelestialDrawGSCSO' Name='CelestialDrawGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\CelestialDrawGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DebugGSShader' Guid='*'>
+			    <File Id='DebugGSCSO' Name='DebugGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\DebugGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DebugVSShader' Guid='*'>
+			    <File Id='DebugVSCSO' Name='DebugVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\DebugVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DebugPSShader' Guid='*'>
+			    <File Id='DebugPSCSO' Name='DebugPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\DebugPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DeferredLightGSShader' Guid='*'>
+			    <File Id='deferredLightGSCSO' Name='deferredLightGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\deferredLightGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DeferredLightPSShader' Guid='*'>
+			    <File Id='deferredLightPSCSO' Name='deferredLightPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\deferredLightPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DeferredLightVSShader' Guid='*'>
+			    <File Id='deferredLightVSCSO' Name='deferredLightVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\deferredLightVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DrainDrawVSShader' Guid='*'>
+			    <File Id='DrainDrawVSCSO' Name='DrainDrawVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\DrainDrawVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DrainDrawPSShader' Guid='*'>
+			    <File Id='DrainDrawPSCSO' Name='DrainDrawPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\DrainDrawPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='DrainDrawGSShader' Guid='*'>
+			    <File Id='DrainDrawGSCSO' Name='DrainDrawGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\DrainDrawGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='EnergyStreamoutVSShader' Guid='*'>
+			    <File Id='EnergyStreamoutVSCSO' Name='EnergyStreamoutVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\EnergyStreamoutVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='EnergyStreamoutGSShader' Guid='*'>
+			    <File Id='EnergyStreamoutGSCSO' Name='EnergyStreamoutGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\EnergyStreamoutGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='EnergyDrawGSShader' Guid='*'>
+			    <File Id='EnergyDrawGSCSO' Name='EnergyDrawGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\EnergyDrawGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='EnergyDrawPSShader' Guid='*'>
+			    <File Id='EnergyDrawPSCSO' Name='EnergyDrawPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\EnergyDrawPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='EnergyDrawVSShader' Guid='*'>
+			    <File Id='EnergyDrawVSCSO' Name='EnergyDrawVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\EnergyDrawVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='FontGSShader' Guid='*'>
+			    <File Id='fontGSCSO' Name='fontGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\fontGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='FontPSShader' Guid='*'>
+			    <File Id='fontPSCSO' Name='fontPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\fontPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='FontVSShader' Guid='*'>
+			    <File Id='fontVSCSO' Name='fontVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\fontVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='GrassGeometryPSShader' Guid='*'>
+			    <File Id='grassGeometryPSCSO' Name='grassGeometryPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\grassGeometryPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='GrassGeometryVSShader' Guid='*'>
+			    <File Id='grassGeometryVSCSO' Name='grassGeometryVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\grassGeometryVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='GrassGeometryLOD0GSShader' Guid='*'>
+			    <File Id='grassGeometryLOD0GSCSO' Name='grassGeometryLOD0GS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\grassGeometryLOD0GS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='GrassGeometryLOD1GSShader' Guid='*'>
+			    <File Id='grassGeometryLOD1GSCSO' Name='grassGeometryLOD1GS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\grassGeometryLOD1GS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='GrassGeometryLOD2GSShader' Guid='*'>
+			    <File Id='grassGeometryLOD2GSCSO' Name='grassGeometryLOD2GS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\grassGeometryLOD2GS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='HeatHazeVSShader' Guid='*'>
+			    <File Id='heatHazeVSCSO' Name='heatHazeVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\heatHazeVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='HeatHazePSShader' Guid='*'>
+			    <File Id='heatHazePSCSO' Name='heatHazePS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\heatHazePS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ModelAnimVSShader' Guid='*'>
+			    <File Id='modelAnimVSCSO' Name='modelAnimVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\modelAnimVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ModelInstancingVSShader' Guid='*'>
+			    <File Id='modelInstancingVSCSO' Name='modelInstancingVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\modelInstancingVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ModelVSShader' Guid='*'>
+			    <File Id='modelVSCSO' Name='modelVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\modelVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ModelPSShader' Guid='*'>
+			    <File Id='modelPSCSO' Name='modelPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\modelPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='OverlayGSShader' Guid='*'>
+			    <File Id='overlayGSCSO' Name='overlayGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\overlayGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='OverlayPSShader' Guid='*'>
+			    <File Id='overlayPSCSO' Name='overlayPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\overlayPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='OverlayVSShader' Guid='*'>
+			    <File Id='overlayVSCSO' Name='overlayVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\overlayVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ParticleCloudGSShader' Guid='*'>
+			    <File Id='particleCloudGSCSO' Name='particleCloudGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\particleCloudGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ParticleCloudGSDepthShader' Guid='*'>
+			    <File Id='particleCloudGSDepthCSO' Name='particleCloudGSDepth.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\particleCloudGSDepth.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ParticleCloudGSStreamOutShader' Guid='*'>
+			    <File Id='particleCloudGSStreamOutCSO' Name='particleCloudGSStreamOut.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\particleCloudGSStreamOut.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ParticleCloudGSOpacityShader' Guid='*'>
+			    <File Id='particleCloudGSOpacityCSO' Name='particleCloudGSOpacity.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\particleCloudGSOpacity.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ParticleCloudPSShader' Guid='*'>
+			    <File Id='particleCloudPSCSO' Name='particleCloudPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\particleCloudPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ParticleCloudVSShader' Guid='*'>
+			    <File Id='particleCloudVSCSO' Name='particleCloudVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\particleCloudVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ParticleCloudVSStreamOutShader' Guid='*'>
+			    <File Id='particleCloudVSStreamOutCSO' Name='particleCloudVSStreamOut.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\particleCloudVSStreamOut.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ParticleCloudPSDepthShader' Guid='*'>
+			    <File Id='particleCloudPSDepthCSO' Name='particleCloudPSDepth.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\particleCloudPSDepth.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ParticleCloudPSOpacityShader' Guid='*'>
+			    <File Id='particleCloudPSOpacityCSO' Name='particleCloudPSOpacity.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\particleCloudPSOpacity.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='QuadTextureVSShader' Guid='*'>
+			    <File Id='quadTextureVSCSO' Name='quadTextureVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\quadTextureVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='QuadTexturePSShader' Guid='*'>
+			    <File Id='quadTexturePSCSO' Name='quadTexturePS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\quadTexturePS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='RainCSShader' Guid='*'>
+			    <File Id='rainCSCSO' Name='rainCS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\rainCS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='RainPSShader' Guid='*'>
+			    <File Id='rainPSCSO' Name='rainPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\rainPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='RainVSShader' Guid='*'>
+			    <File Id='rainVSCSO' Name='rainVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\rainVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ScreenParticleVSShader' Guid='*'>
+			    <File Id='screenParticleVSCSO' Name='screenParticleVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\screenParticleVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ScreenParticlePSShader' Guid='*'>
+			    <File Id='screenParticlePSCSO' Name='screenParticlePS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\screenParticlePS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ScreenParticlePSNoDiscardShader' Guid='*'>
+			    <File Id='screenParticlePSNoDiscardCSO' Name='screenParticlePSNoDiscard.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\screenParticlePSNoDiscard.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ScreenParticleGSShader' Guid='*'>
+			    <File Id='screenParticleGSCSO' Name='screenParticleGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\screenParticleGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ShadowCharVSShader' Guid='*'>
+			    <File Id='shadowCharVSCSO' Name='shadowCharVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\shadowCharVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ShadowCharGSShader' Guid='*'>
+			    <File Id='shadowCharGSCSO' Name='shadowCharGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\shadowCharGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ShadowCompileGSShader' Guid='*'>
+			    <File Id='shadowCompileGSCSO' Name='shadowCompileGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\shadowCompileGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ShadowCompilePSShader' Guid='*'>
+			    <File Id='shadowCompilePSCSO' Name='shadowCompilePS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\shadowCompilePS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ShadowCompileVSShader' Guid='*'>
+			    <File Id='shadowCompileVSCSO' Name='shadowCompileVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\shadowCompileVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ShadowComputeCSShader' Guid='*'>
+			    <File Id='shadowComputeCSCSO' Name='shadowComputeCS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\shadowComputeCS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ShadowVSShader' Guid='*'>
+			    <File Id='shadowVSCSO' Name='shadowVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\shadowVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='ShadowGSShader' Guid='*'>
+			    <File Id='shadowGSCSO' Name='shadowGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\shadowGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SkyPSShader' Guid='*'>
+			    <File Id='skyPSCSO' Name='skyPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\skyPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SkyVSShader' Guid='*'>
+			    <File Id='skyVSCSO' Name='skyVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\skyVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SkySpherePSShader' Guid='*'>
+			    <File Id='skySpherePSCSO' Name='skySpherePS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\skySpherePS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SkySphereVSShader' Guid='*'>
+			    <File Id='skySphereVSCSO' Name='skySphereVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\skySphereVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SurfacePSShader' Guid='*'>
+			    <File Id='surfacePSCSO' Name='surfacePS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\surfacePS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SurfaceInstancingVSShader' Guid='*'>
+			    <File Id='surfaceInstancingVSCSO' Name='surfaceInstancingVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\surfaceInstancingVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SwampgrassGeometryPSShader' Guid='*'>
+			    <File Id='SwampgrassGeometryPSCSO' Name='SwampgrassGeometryPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\SwampgrassGeometryPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SwampgrassGeometryLOD0GSShader' Guid='*'>
+			    <File Id='SwampgrassGeometryLOD0GSCSO' Name='SwampgrassGeometryLOD0GS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\SwampgrassGeometryLOD0GS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SwampgrassGeometryLOD1GSShader' Guid='*'>
+			    <File Id='SwampgrassGeometryLOD1GSCSO' Name='SwampgrassGeometryLOD1GS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\SwampgrassGeometryLOD1GS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='SwampgrassGeometryLOD2GSShader' Guid='*'>
+			    <File Id='SwampgrassGeometryLOD2GSCSO' Name='SwampgrassGeometryLOD2GS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\SwampgrassGeometryLOD2GS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='TerrainPSShader' Guid='*'>
+			    <File Id='terrainPSCSO' Name='terrainPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\terrainPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='TerrainVSShader' Guid='*'>
+			    <File Id='terrainVSCSO' Name='terrainVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\terrainVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='TessellationDSShader' Guid='*'>
+			    <File Id='tessellationDSCSO' Name='tessellationDS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\tessellationDS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='TessellationHSShader' Guid='*'>
+			    <File Id='tessellationHSCSO' Name='tessellationHS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\tessellationHS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='TessellationPSShader' Guid='*'>
+			    <File Id='tessellationPSCSO' Name='tessellationPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\tessellationPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='TessellationVSShader' Guid='*'>
+			    <File Id='tessellationVSCSO' Name='tessellationVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\tessellationVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='TerrainScatterPSShader' Guid='*'>
+			    <File Id='terrainScatterPSCSO' Name='terrainScatterPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\terrainScatterPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='TreeShadowVSShader' Guid='*'>
+			    <File Id='TreeShadowVSCSO' Name='TreeShadowVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\TreeShadowVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='TreeShadowGSShader' Guid='*'>
+			    <File Id='TreeShadowGSCSO' Name='TreeShadowGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\TreeShadowGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='VindDrawGSShader' Guid='*'>
+			    <File Id='VindDrawGSCSO' Name='VindDrawGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\VindDrawGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='VindDrawVSShader' Guid='*'>
+			    <File Id='VindDrawVSCSO' Name='VindDrawVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\VindDrawVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='VindDrawPSShader' Guid='*'>
+			    <File Id='VindDrawPSCSO' Name='VindDrawPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\VindDrawPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='VindStreamoutGSShader' Guid='*'>
+			    <File Id='VindStreamoutGSCSO' Name='VindStreamoutGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\VindStreamoutGS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='VindStreamoutVSShader' Guid='*'>
+			    <File Id='VindStreamoutVSCSO' Name='VindStreamoutVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\VindStreamoutVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='WaterPSShader' Guid='*'>
+			    <File Id='WaterPSCSO' Name='WaterPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\WaterPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='WispPSShader' Guid='*'>
+			    <File Id='WispPSCSO' Name='WispPS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\WispPS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='WispVSShader' Guid='*'>
+			    <File Id='WispVSCSO' Name='WispVS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\WispVS.cso' KeyPath='yes' />
+			  </Component>
+			  
+			  <Component Id='WispGSShader' Guid='*'>
+			    <File Id='WispGSCSO' Name='WispGS.cso' DiskId='1' Source='..\StortSpelprojekt\Shaders\WispGS.cso' KeyPath='yes' />
+			  </Component>
+			</Directory>
+			
+          </Directory>
+        </Directory>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="WanShift">
+          <Component Id="ProgramMenuDir" Guid="*">
+            <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+            <RegistryValue Root='HKCU' Key='Software\[Manufacturer]\[ProductName]' Type='string' Value='' KeyPath='yes' />
+          </Component>
+        </Directory>
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <Feature Id='Complete' Title='WanShift' Description='The complete package.'
+      Display='expand' Level='1' ConfigurableDirectory='INSTALLDIR'>
+      <Feature Id='MainProgram' Title='Program' Description='The main executable.' Level='1'>
+        <ComponentRef Id='ClientIPCExecutable' />
+        <ComponentRef Id='LauncherExecutable' />
+        <ComponentRef Id='MainExecutable' />
+        <ComponentRef Id='ProgramMenuDir' />
+        <ComponentRef Id='WanShiftAppData' />	
+      </Feature>
+	  
+      <Feature Id='LibraryComponents' Title='Libraries' Description='All libraries. Renderer, input D3D etc.' Level='1'>
+        <ComponentRef Id='RendererLibrary' />
+        <ComponentRef Id='WanInputLibrary' />
+        <ComponentRef Id='ModelLoaderLibrary' />
+        <ComponentRef Id='d3dcompiler_46Library' />
+        <ComponentRef Id='D3Dcompiler_47Library' />
+        <ComponentRef Id='apimswincorelibraryloaderl120Library' />
+        <ComponentRef Id='apimswincorefilel121Library' />
+        <ComponentRef Id='apimswincorefilel211Library' />
+        <ComponentRef Id='apimswincoreerrorhandlingl111Library' />
+        <ComponentRef Id='apimswincoredebugl111Library' />
+        <ComponentRef Id='apimswincoreregistryl110Library' />
+        <ComponentRef Id='apimswincoreheapl120Library' />
+        <ComponentRef Id='apimswincoresynchl120Library' />
+        <ComponentRef Id='apimswincoreprocessthreadsl112Library' />
+        <ComponentRef Id='apimswincoreprocessenvironmentl120Library' />
+        <ComponentRef Id='apimswincorememoryl112Library' />
+        <ComponentRef Id='apimswincoresysinfol121Library' />
+        <ComponentRef Id='apimswincoreinterlockedl120Library' />
+        <ComponentRef Id='apimswincorelocalizationl121Library' />
+        <ComponentRef Id='apimswincoreiol111Library' />
+        <ComponentRef Id='apimswincorestringobsoletel110Library' />
+        <ComponentRef Id='apimswincoreheapobsoletel110Library' />
+        <ComponentRef Id='MSVCP120Library' />
+        <ComponentRef Id='MSVCR120Library' />
+        <ComponentRef Id='d3dx11_43Library' />
+        <ComponentRef Id='FmodLibrary' />
+        <ComponentRef Id='ClientLibrary' />
+      </Feature>
+	  
+      <Feature Id='INIComponents' Title='ini files' Description='All .ini files' Level='1'>
+        <ComponentRef Id='CollectionInit' />
+        <ComponentRef Id='DebugInit' />
+        <ComponentRef Id='DefaultInit' />
+        <ComponentRef Id='SkyInit' />
+        <ComponentRef Id='TexturesInit' />
+        <ComponentRef Id='UserInitAppData' />
+        <ComponentRef Id='WorldVariablesInit' />
+      </Feature>
+	  
+	  <Feature Id='ContentComponents' Title='Content' Description='Textures, models, fonts etc.' Level='1'>
+        <ComponentRef Id='BindPoseFBXMesh' />
+        <ComponentRef Id='RunCycleFBXAnimation' />
+        <ComponentRef Id='ExtractEnergyCycleFBXAnimation' />
+        <ComponentRef Id='IdleCycleFBXAnimation' />
+        <ComponentRef Id='CharacterDiffuseTexture' />
+        <ComponentRef Id='CharacterGlowTexture' />
+        <ComponentRef Id='CharacterNormalTexture' />
+        <ComponentRef Id='BranchFBXMesh' />
+        <ComponentRef Id='RedwoodTreeFBXMesh' />
+        <ComponentRef Id='RoofFBXMesh' />
+		
+        <ComponentRef Id='MyriadProFont' />
+        <ComponentRef Id='MyriadProFontDesc' />
+		
+        <ComponentRef Id='DesertSound' />
+        <ComponentRef Id='ForestSound' />
+        <ComponentRef Id='MeadowsSound' />
+        <ComponentRef Id='MountainsSound' />
+        <ComponentRef Id='SwampSound' />
+        <ComponentRef Id='AbsorbSound' />
+        <ComponentRef Id='BiomshiftSound' />
+        <ComponentRef Id='BirdsSound' />
+        <ComponentRef Id='BongSound' />
+        <ComponentRef Id='EnergySourceSound' />
+        <ComponentRef Id='GhostSound' />
+        <ComponentRef Id='NPC_AngrySound' />
+        <ComponentRef Id='NPC_IdleSound' />
+        <ComponentRef Id='Orb1Sound' />
+        <ComponentRef Id='Orb2Sound' />
+        <ComponentRef Id='WalkingSound' />
+		
+        <ComponentRef Id='BarkTexture' />
+        <ComponentRef Id='BarkNormalTexture' />
+        <ComponentRef Id='BarkSpecularTexture' />
+        <ComponentRef Id='BlackTexture' />
+        <ComponentRef Id='BranchTexture' />
+        <ComponentRef Id='CloudsTexture' />
+        <ComponentRef Id='DefaultTexture' />
+        <ComponentRef Id='DemoStarsTexture' />
+        <ComponentRef Id='ForestTexture' />
+        <ComponentRef Id='FuzzyBigCircleTexture' />
+        <ComponentRef Id='FuzzyCircleTexture' />
+        <ComponentRef Id='GrassBlend2Texture' />
+        <ComponentRef Id='GrasskdTexture' />
+        <ComponentRef Id='GrassTexture' />
+        <ComponentRef Id='LeafRoofTexture' />
+        <ComponentRef Id='Noise3DTexture' />
+        <ComponentRef Id='PlanetCircleTexture' />
+        <ComponentRef Id='PlanetTex1Texture' />
+        <ComponentRef Id='PlanetTex2Texture' />
+        <ComponentRef Id='RainNoiseTexture' />
+        <ComponentRef Id='RainStreakTexture' />
+        <ComponentRef Id='RockHeightTexture' />
+        <ComponentRef Id='Sand_Texture2Texture' />
+        <ComponentRef Id='SeedTexture' />
+        <ComponentRef Id='Smoke2Texture' />
+        <ComponentRef Id='SmokeLowerResTexture' />
+        <ComponentRef Id='SnowFlakeTexture' />
+        <ComponentRef Id='SnowStoneTexture' />
+        <ComponentRef Id='StoneTexture' />
+        <ComponentRef Id='SwampTexture' />
+        <ComponentRef Id='WaterFoamTexture' />
+        <ComponentRef Id='WaterHeightmapTexture' />
+        <ComponentRef Id='WaterNormalmapTexture' />
+        <ComponentRef Id='WispOrbTexture' />
+        <ComponentRef Id='WispTexture' />
+        <ComponentRef Id='Wisp2Texture' />
+      </Feature>
+	  
+	  <Feature Id='ShaderComponents' Title='Shaders' Description='All used shaders' Level='1'>
+        <ComponentRef Id='BlurVerticalPSShader' />
+        <ComponentRef Id='BlurHorizontalPSShader' />
+        <ComponentRef Id='CelestialDrawGSShader' />
+        <ComponentRef Id='CelestialDrawVSShader' />
+        <ComponentRef Id='CelestialDrawPSShader' />
+        <ComponentRef Id='DebugGSShader' />
+        <ComponentRef Id='DebugVSShader' />
+        <ComponentRef Id='DebugPSShader' />
+        <ComponentRef Id='DeferredLightPSShader' />
+        <ComponentRef Id='DeferredLightVSShader' />
+        <ComponentRef Id='DeferredLightGSShader' />
+        <ComponentRef Id='DrainDrawVSShader' />
+        <ComponentRef Id='DrainDrawPSShader' />
+        <ComponentRef Id='DrainDrawGSShader' />
+        <ComponentRef Id='EnergyStreamoutGSShader' />
+        <ComponentRef Id='EnergyStreamoutVSShader' />
+        <ComponentRef Id='EnergyDrawGSShader' />
+        <ComponentRef Id='EnergyDrawVSShader' />
+        <ComponentRef Id='EnergyDrawPSShader' />
+        <ComponentRef Id='FontGSShader' />
+        <ComponentRef Id='FontPSShader' />
+        <ComponentRef Id='FontVSShader' />
+        <ComponentRef Id='ModelAnimVSShader' />
+        <ComponentRef Id='ModelInstancingVSShader' />
+        <ComponentRef Id='ModelVSShader' />
+        <ComponentRef Id='ModelPSShader' />
+        <ComponentRef Id='GrassGeometryVSShader' />
+        <ComponentRef Id='GrassGeometryPSShader' />
+        <ComponentRef Id='GrassGeometryLOD0GSShader' />
+        <ComponentRef Id='GrassGeometryLOD1GSShader' />
+        <ComponentRef Id='GrassGeometryLOD2GSShader' />
+        <ComponentRef Id='HeatHazeVSShader' />
+        <ComponentRef Id='HeatHazePSShader' />
+        <ComponentRef Id='OverlayGSShader' />
+        <ComponentRef Id='OverlayPSShader' />
+        <ComponentRef Id='OverlayVSShader' />
+        <ComponentRef Id='ParticleCloudGSShader' />
+        <ComponentRef Id='ParticleCloudVSShader' />
+        <ComponentRef Id='ParticleCloudPSShader' />
+        <ComponentRef Id='ParticleCloudGSDepthShader' />
+        <ComponentRef Id='ParticleCloudPSDepthShader' />
+        <ComponentRef Id='ParticleCloudGSOpacityShader' />
+        <ComponentRef Id='ParticleCloudPSOpacityShader' />
+        <ComponentRef Id='ParticleCloudVSStreamOutShader' />
+        <ComponentRef Id='ParticleCloudGSStreamOutShader' />
+        <ComponentRef Id='QuadTextureVSShader' />
+        <ComponentRef Id='QuadTexturePSShader' />
+        <ComponentRef Id='RainCSShader' />
+        <ComponentRef Id='RainPSShader' />
+        <ComponentRef Id='RainVSShader' />
+        <ComponentRef Id='ScreenParticlePSShader' />
+        <ComponentRef Id='ScreenParticleVSShader' />
+        <ComponentRef Id='ScreenParticleGSShader' />
+        <ComponentRef Id='ScreenParticlePSNoDiscardShader' />
+        <ComponentRef Id='ShadowCharVSShader' />
+        <ComponentRef Id='ShadowCharGSShader' />
+        <ComponentRef Id='ShadowCompileGSShader' />
+        <ComponentRef Id='ShadowCompilePSShader' />
+        <ComponentRef Id='ShadowCompileVSShader' />
+        <ComponentRef Id='ShadowComputeCSShader' />
+        <ComponentRef Id='ShadowGSShader' />
+        <ComponentRef Id='ShadowVSShader' />
+        <ComponentRef Id='SkyPSShader' />
+        <ComponentRef Id='SkyVSShader' />
+        <ComponentRef Id='SkySpherePSShader' />
+        <ComponentRef Id='SkySphereVSShader' />
+        <ComponentRef Id='SurfacePSShader' />
+        <ComponentRef Id='SurfaceInstancingVSShader' />
+        <ComponentRef Id='SwampgrassGeometryPSShader' />
+        <ComponentRef Id='SwampgrassGeometryLOD0GSShader' />
+        <ComponentRef Id='SwampgrassGeometryLOD1GSShader' />
+        <ComponentRef Id='SwampgrassGeometryLOD2GSShader' />
+		<ComponentRef Id='TerrainVSShader' />
+		<ComponentRef Id='TerrainPSShader' />
+        <ComponentRef Id='TessellationVSShader' />
+        <ComponentRef Id='TessellationPSShader' />
+        <ComponentRef Id='TessellationHSShader' />
+        <ComponentRef Id='TessellationDSShader' />
+        <ComponentRef Id='TerrainScatterPSShader' />
+        <ComponentRef Id='TreeShadowVSShader' />
+        <ComponentRef Id='TreeShadowGSShader' />
+        <ComponentRef Id='VindDrawVSShader' />
+        <ComponentRef Id='VindDrawGSShader' />
+        <ComponentRef Id='VindDrawPSShader' />
+        <ComponentRef Id='VindStreamoutVSShader' />
+        <ComponentRef Id='VindStreamoutGSShader' />
+        <ComponentRef Id='WaterPSShader' />
+        <ComponentRef Id='WispPSShader' />
+        <ComponentRef Id='WispVSShader' />
+        <ComponentRef Id='WispGSShader' />
+      </Feature>
+	  
+      <Feature Id='Documentation' Title='Description' Description='The instruction manual.' Level='1000'>
+        <ComponentRef Id='Manual' />
+      </Feature>
+    </Feature>
+
+    <UIRef Id="WixUI_InstallDir" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+
+    <Icon Id="WanShift.exe" SourceFile="..\Debug\StortSpelprojekt.exe" />
+	
+	<WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+    <WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
+    <WixVariable Id="WixUIExclamationIco" Value="icon32x32.ico" />
+    <WixVariable Id="WixUIInfoIco" Value="icon32x32.ico" />
+    <WixVariable Id="WixUINewIco" Value="icon16x16.ico" />
+    <WixVariable Id="WixUIUpIco" Value="icon16x16.ico" />
+
+  </Product>
+</Wix>

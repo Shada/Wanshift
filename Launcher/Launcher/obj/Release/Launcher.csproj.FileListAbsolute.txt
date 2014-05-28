@@ -1,0 +1,14 @@
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Release\close.png
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Release\close_down.png
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Release\Launch_down.png
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Release\Launch.png
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Release\grass.jpg
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Release\Launcher.exe.config
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Release\Launcher.exe
+D:\SourceTree\WanShift\Launcher\Launcher\bin\Release\Launcher.pdb
+D:\SourceTree\WanShift\Launcher\Launcher\obj\Release\Launcher.Launcher.resources
+D:\SourceTree\WanShift\Launcher\Launcher\obj\Release\Launcher.Properties.Resources.resources
+D:\SourceTree\WanShift\Launcher\Launcher\obj\Release\Launcher.csproj.GenerateResource.Cache
+D:\SourceTree\WanShift\Launcher\Launcher\obj\Release\Launcher.exe
+D:\SourceTree\WanShift\Launcher\Launcher\obj\Release\Launcher.pdb
+D:\SourceTree\WanShift\Launcher\Launcher\obj\Release\Launcher.csprojResolveAssemblyReference.cache
