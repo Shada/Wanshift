@@ -67,7 +67,7 @@ void PlayerAspect::init(MainState& _mainState)
 	extrationFreq = EXTRACTFREQ;
 	runningFreq = RUNNINGFREQ;
 
-	deathDuration = 5.f;
+	deathDuration = 6.f;
 
 	updateChunk(player.position);
 
@@ -485,7 +485,7 @@ void PlayerAspect::jump()
 	{
 		inTheAir = true;
 		// A possitive force will launch the player into the air
-		verticalForce = 150;
+		verticalForce = 80;
 		player.position.y++;
 	}
 }
@@ -643,22 +643,22 @@ void PlayerAspect::slowDeath(float _dt)
 {
 	if(deathCutofTime == 0.f)
 	{
-		std::thread t1(&PlayerAspect::reCreateTerrain, this);
-		t1.detach();
+		//std::thread t1(&PlayerAspect::reCreateTerrain, this);
+		//t1.detach();
 		speedDecrease = player.velocity / (deathDuration * 0.915f);
 		threadLock = true;
 		threadLockTiny = true;
 
-		terrainHeights = &terrain->heights[terrain->tinyActive[player.smallTerrainID].heightsID];
+		//terrainHeights = &terrain->heights[terrain->tinyActive[player.smallTerrainID].heightsID];
 	}
 
 	deathCutofTime += _dt;
 	if(deathCutofTime >= deathDuration && !threadLockTiny && !inTheAir)
 		reset();
 
-	float freqDecrease = _dt * (1 / (deathDuration * 0.9f));
+	float freqDecrease = _dt * (1 / (deathDuration * 0.8f));
 
-	if(deathCutofTime >= deathDuration * 0.9f)
+	if(deathCutofTime >= deathDuration * 0.8f)
 	{
 		player.velocity = 0.f;
 		idleFreq = extrationFreq = runningFreq = 1000.f;
@@ -669,8 +669,10 @@ void PlayerAspect::slowDeath(float _dt)
 		if(!threadLock)
 		{
 			threadLock = true;
-			std::thread t1(&PlayerAspect::reCreateTinys, this);
-			t1.detach();
+			//std::thread t1(&PlayerAspect::reCreateTinys, this);
+			//t1.detach();
+			reCreateTerrain();
+			reCreateTinys();
 		}
 	}
 	else
