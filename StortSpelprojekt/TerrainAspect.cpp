@@ -169,6 +169,15 @@ void TerrainAspect::runAspect(float _dt)
 		terrainContainer.largeActive	= terrainContainer.large;
 		playerContainer.playerCullingPos = playerContainer.position;
 		updateCullingNodes();
+
+		for(int i = 0; i < playerContainer.energysPos.size(); i++)
+		{
+			playerContainer.energysPos[i] = Utility::mapToTerrain(glm::vec2(playerContainer.energysPos[i].x, playerContainer.energysPos[i].z), this);
+			if(playerContainer.energysPos[i].y < 50)
+				playerContainer.energysPos[i].y = 70;
+			else
+				playerContainer.energysPos[i].y += 20;
+		}
 	}
 
 	elapsedTime += _dt;
