@@ -45,7 +45,12 @@ void PlayerAspect::init(MainState& _mainState)
 	cbSpotLightIndex = graphics->getHandleIndex("cbSpotLight", ResourceType::ConstantBuffer);
 	
 	player.playerCullingPos = player.position;
-	player.velocity = verticalForce = 0;
+	player.velocity2D = glm::vec2(0,0);
+	player.velocity = 0.0f;
+	verticalForce = 0;
+	player.acceleration = glm::vec2(0,0);
+	player.accelerationStrength = 2.5f;
+	player.maxSpeed = 2;
 	dtSum = 0.f;
 	adaptUpdateFreq = 1.f;
 
@@ -180,6 +185,8 @@ void PlayerAspect::runAspect(float _dt)
 		vSpeed.y -= lookAt->x;
 	}
 
+	player.acceleration = vSpeed * player.accelerationStrength;
+
 	if(vSpeed == glm::vec2())
 		playerBoost = false;
 
@@ -187,7 +194,9 @@ void PlayerAspect::runAspect(float _dt)
 	{
 		if(deathCutofTime <= deathDuration * 0.9f)
 			player.rotation = vSpeed != glm::vec2() ? glm::normalize(vSpeed) : vSpeed;
+		player.modelRotation += (player.rotation - player.modelRotation) * 0.3f;
 	}
+	
 
 	if(player.energyInfo.energyAmount > 0)
 	{
@@ -197,12 +206,14 @@ void PlayerAspect::runAspect(float _dt)
 	else
 		slowDeath(_dt);
 
-	if(deathCutofTime <= deathDuration * 0.9f && (vSpeed.x != 0 || vSpeed.y != 0))
+	if(deathCutofTime <= deathDuration * 0.9f && (player.modelRotation.x != 0 || player.modelRotation.y != 0))
 	{
 		//playersRotDegree
-		if(vSpeed.x == 0)
-			vSpeed.x = .0001f;
-		player.rot = std::acos(vSpeed.y / glm::length(vSpeed)) * vSpeed.x / abs(vSpeed.x);
+		if(player.modelRotation.x == 0)
+			player.modelRotation.x = .0001f;
+		float oldRot = player.rot;
+		player.rot = std::acos(player.modelRotation.y / glm::length(player.modelRotation)) * player.modelRotation.x / abs(player.modelRotation.x);
+		player.rotationSpeed = player.rot - oldRot;
 	}
 
 	CBSpotLight cbSpot;
@@ -242,6 +253,71 @@ void PlayerAspect::move(float _dt)
 	//if (!debugNoMove)
 	//	return;
 
+
+
+	//if(!inTheAir)
+	//{
+	//	if(player.rotation.x == 0 && player.rotation.y == 0)
+	//	{
+	//		player.velocity = 0;
+	//		if(player.animationState == aRUNNING)
+	//		{
+	//			player.animationState = aIDLE;
+	//			player.animationFrame = 0;
+	//			player.prevAnimationFrame = 0;
+	//		}
+	//	}
+	//	else
+	//	{
+	//		if(player.animationState != aRUNNING)
+	//		{
+	//			player.animationState = aRUNNING;
+	//			player.animationFrame = 0;
+	//			player.prevAnimationFrame = 0;
+	//		}
+	//		if(adaptation.maxBiomValue() < 0.3f)
+	//			player.velocity = 85 * 0.6f;
+	//		else
+	//		{
+	//			SingleBiom currentPoint = Utility::getBlendMapValue(&bioms, player.position);
+
+	//			player.velocity = 0;
+	//			for(int i = 0; i < 4; i++)
+	//			{
+	//				if(85 * (0.6f + currentPoint.map1[i] * adaptation.map1[i] / 2.5) > player.velocity)
+	//					player.velocity = 85 * (0.6f + currentPoint.map1[i] * adaptation.map1[i] / 2.5f);
+	//				if(85 * (0.6f + currentPoint.map2[i] * adaptation.map2[i] / 2.5) > player.velocity)
+	//					player.velocity = 85 * (0.6f + currentPoint.map2[i] * adaptation.map2[i] / 2.5f);
+	//			}
+	//		}
+	//	}
+	//	if(playerBoost)
+	//		player.velocity *= 16.f;
+	//}
+	//else
+	//	player.velocity *= 0.9999f;
+
+	//ForestContainer &forest(*c.get<ForestContainer>(Containers::FOREST));
+
+	//bool treeHit = false;
+	//glm::vec2 playerPos2 = glm::vec2(player.position.x,player.position.z);
+	//for(uint i = 0; i < forest.treeList.size(); i++)
+	//{
+	//	glm::vec2 treePos =  glm::vec2(forest.treeList.at(i).pos.x,forest.treeList.at(i).pos.z);
+
+	//	float dist = glm::length(playerPos2 - treePos);
+	//	float radie = 0.82f * forest.treeList.at(i).scale.x;
+	//	if(dist < radie)
+	//	{
+	//		//sätt till precis utanför, kör bara på xz
+	//		glm::vec2 dir = glm::normalize( playerPos2 - treePos );
+	//		playerPos2 = treePos + dir * radie;
+	//		player.position.x = playerPos2.x;
+	//		player.position.z = playerPos2.y;
+	//		treeHit = true;
+	//		break;
+	//	}
+	//}
 	if(!inTheAir)
 	{
 		if(player.rotation.x == 0 && player.rotation.y == 0)
@@ -262,32 +338,36 @@ void PlayerAspect::move(float _dt)
 				player.animationFrame = 0;
 				player.prevAnimationFrame = 0;
 			}
-			if(adaptation.maxBiomValue() < 0.3f)
-				player.velocity = 85 * 0.6f;
-			else
-			{
-				SingleBiom currentPoint = Utility::getBlendMapValue(&bioms, player.position);
-
-				player.velocity = 0;
-				for(int i = 0; i < 4; i++)
-				{
-					if(85 * (0.6f + currentPoint.map1[i] * adaptation.map1[i] / 2.5) > player.velocity)
-						player.velocity = 85 * (0.6f + currentPoint.map1[i] * adaptation.map1[i] / 2.5f);
-					if(85 * (0.6f + currentPoint.map2[i] * adaptation.map2[i] / 2.5) > player.velocity)
-						player.velocity = 85 * (0.6f + currentPoint.map2[i] * adaptation.map2[i] / 2.5f);
-				}
-			}
 		}
+		if(sqrt(player.acceleration.x * player.acceleration.x + player.acceleration.y * player.acceleration.y) < 0.01f)
+		{
+			player.velocity2D *= glm::max(0.6f - _dt, 0.0f);
+		}
+		//accelerate
+		player.velocity2D.x += player.acceleration.x;
+		player.velocity2D.y += player.acceleration.y;
+		player.velocity = sqrt(player.velocity2D.x * player.velocity2D.x + player.velocity2D.y * player.velocity2D.y);
+
+		float multiplier = 1.0f;
 		if(playerBoost)
-			player.velocity *= 16.f;
+			multiplier = 5.0f;
+
+		//if faster than max speed, lower to max speed
+		if(player.velocity >= player.maxSpeed * multiplier)
+		{
+			player.velocity2D = glm::normalize(player.velocity2D) * player.maxSpeed * multiplier;
+			player.velocity = sqrt(player.velocity2D.x * player.velocity2D.x + player.velocity2D.y * player.velocity2D.y);
+		}
 	}
-	else
-		player.velocity *= 0.9999f;
 
 	ForestContainer &forest(*c.get<ForestContainer>(Containers::FOREST));
 
 	bool treeHit = false;
 	glm::vec2 playerPos2 = glm::vec2(player.position.x,player.position.z);
+
+	player.position.x += player.velocity2D.x;
+	player.position.z += player.velocity2D.y;
+
 	for(uint i = 0; i < forest.treeList.size(); i++)
 	{
 		glm::vec2 treePos =  glm::vec2(forest.treeList.at(i).pos.x,forest.treeList.at(i).pos.z);
@@ -301,10 +381,12 @@ void PlayerAspect::move(float _dt)
 			playerPos2 = treePos + dir * radie;
 			player.position.x = playerPos2.x;
 			player.position.z = playerPos2.y;
+			player.velocity2D = -player.velocity2D * 0.5f;
 			treeHit = true;
 			break;
 		}
 	}
+
 	/*if(treeHit)
 		return;*/
 	followTerrain(_dt);
@@ -368,7 +450,7 @@ void PlayerAspect::followTerrain(float _dt)
 	double angle = acos(glm::length(glm::cross(norm, glm::vec3(0, 1, 0))));
 
 
-	if(terrainY - player.position.y < -2)
+	if(terrainY - player.position.y < -5)
 	{
 		applyGravity(_dt);
 		return;
@@ -399,7 +481,10 @@ void PlayerAspect::followTerrain(float _dt)
 	if(!inTheAir && player.velocity == 0) 
 		return;
 
-	glm::vec3 dist = glm::normalize(theoreticalMove - player.position);
+	glm::vec3 dist = glm::vec3();
+	//to avoid normalizing a null vector
+	if(theoreticalMove - player.position != glm::vec3() )
+		dist = glm::normalize(theoreticalMove - player.position);
 
 	// Cannot climb steep hills
 	if(angle < 0.75 && !inTheAir && terrainY + 15 > player.position.y + dist.y * _dt * player.velocity)

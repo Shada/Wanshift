@@ -33,8 +33,14 @@ struct PlayerContainer : Container
 	//player position from last time a chunk was loaded
 	glm::vec3	playerCullingPos;
 	//rotation of player in x and z
-	glm::vec2	rotation;
-	float velocity;
+	glm::vec2	rotation;		//for logic
+	glm::vec2	modelRotation;	//for model
+	float		rotationSpeed;	//for model when falling
+	glm::vec2	velocity2D;
+	glm::vec2	acceleration;
+	float		velocity;
+	float		accelerationStrength;
+	float		maxSpeed;
 
 	bool isDraining;
 	int absorbingPlayer;
@@ -61,7 +67,7 @@ struct PlayerContainer : Container
 	std::array < float, 10 > playersEnergy;
 
 	std::array < AnimationState, 10 >	playersAnimationState;
-	std::array < int, 10 >			playersAnimationFrame;
+	std::array < int, 10 >				playersAnimationFrame;
 	std::array < int, 10 >				playersPrevAnimationFrame;
 	std::array < float, 10 >			playersAnimationInterpolation;
 
