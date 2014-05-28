@@ -62,15 +62,14 @@ void generateBlade(float3 rootPos, inout TriangleStream<GS_Output> triStream, co
 	//construct one blade
 
 	float3 p = rootPos;
-	const float blend = blendMap.SampleLevel(samLinear2,frac(p.xz/5100.0),0).r;
 	const float blendZ = biomBlendMap.SampleLevel(samLinear2, frac((p.xz - tStartPos) / (45900 * 3)), 0).b;
 	const float blendX2 = biomBlendMap2.SampleLevel(samLinear2, frac((p.xz - tStartPos) / (45900 * 3)), 0).r;
 
-	const float blend2 = max(blendZ, blendX2);
+	const float blend = max(blendZ, blendX2);
 
 	const float random = rand3(p.xz);
 	const float dist = length(p - cameraPos.xyz);
-	const float originalBladeHeight = (maxBladeHeight * abs(random * 0.3 + 0.7)) * (blend2 + interpVal) * (blend2 + interpVal);
+	const float originalBladeHeight = (maxBladeHeight * abs(random * 0.3 + 0.7)) * (blend + interpVal) * (blend + interpVal);
 	const float bladeSegHeight = originalBladeHeight/(float)numSegments * max(0,(3000-dist)/3000);
 	//if zero no need to create blade since its not gonna be visible anyway
 	if(bladeSegHeight == 0)// || (i == 1 && dist > 600) || (i == 2 && dist > 300)) //should prob not be culled that way

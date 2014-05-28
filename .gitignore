@@ -28,6 +28,14 @@ lib/Renderer.dll
 lib/Renderer.lib
 lib/WanInput.dll
 lib/WanInput.lib
+lib/ModelLoader.dll
+lib/ModelLoader.exp
+lib/ModelLoader.lib
+lib/ModelLoader.pbd
+lib/WanInput.dll
+lib/WanInput.exp
+lib/WanInput.lib
+lib/WanInput.pbd
 Server/Debug/ComLIB.lib
 Server/Debug/LogLIB.lib
 Server/Debug/SQLManage.lib
@@ -195,3 +203,5 @@ StortSpelprojekt/Textures/star.png
 StortSpelprojekt/Textures/star.xcf
 StortSpelprojekt/Textures/starsmall.png
 StortSpelprojekt/Textures/stefan.png
+StortSpelprojekt/Debug/StortSpelprojekt.vcxprojResolveAssemblyReference.cache
+StortSpelprojekt/Release/StortSpelprojekt.vcxprojResolveAssemblyReference.cache

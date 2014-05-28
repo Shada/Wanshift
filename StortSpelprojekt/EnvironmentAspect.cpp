@@ -547,12 +547,12 @@ void EnvironmentAspect::runAspect(float _dt)
 	if (dt < 50)
 		return;
 
-//#ifndef _DEBUG
-//	if (b.map1.r > 0.001)
-//		UpdateSand(dt);
-//#endif
-	if (b.map1.b > 0.001)
-		UpdateLocalWind(c, dt / 1000);
+#ifndef _DEBUG
+	if (b.map1.r > 0.001)
+		UpdateSand(dt);
+#endif
+	//if (b.map1.b > 0.001)
+	//	UpdateLocalWind(c, dt / 1000);
 	if (!storm.isMultiPlayer && b.map1.r > 0.001)
 		UpdateGlobalWind(c);
 	//UpdateClouds(c, dt / 1000);

@@ -54,7 +54,7 @@ void TerrainAspect::init(MainState& _mainState)
 	playerContainer.position = playerPos;
 
 	createTerrainFromPosition(glm::vec2(playerPos.x, playerPos.z));
-	createTinyFromPosition();
+	createTinyFromPosition(glm::vec2(playerPos.x, playerPos.z));
 
 	graphics->addHandle("12", ResourceType::ShaderResourceView, terrainContainer.biomMapID1);
 	graphics->addHandle("13", ResourceType::ShaderResourceView, terrainContainer.biomMapID2);
@@ -76,7 +76,6 @@ void TerrainAspect::updateCullingNodes()
 
 	for(uint i = 0; i < terrainContainer.largeActive.size(); i++)
 		terrainContainer.largeNodes.at(0).children.at(i)->addChunk(&terrainContainer.largeActive.at(i));
-
 }
 
 void TerrainAspect::calculateBufferOffsets()
@@ -107,7 +106,7 @@ void TerrainAspect::calculateBufferOffsets()
 	tempNVerts = indexBuffer.size();
 }
 
-bool step2 = false, step3 = false;
+std::vector<bool> steps = std::vector<bool>(5, false);
 void TerrainAspect::runAspect(float _dt)
 {
 	_dt *= 0.001f;
@@ -122,6 +121,15 @@ void TerrainAspect::runAspect(float _dt)
 		//chunkGenerationLock = true;
 		//recreateChunks();
 		setHeightsID(&terrainContainer.tiny, terrainContainer.tinySize);
+		
+		steps.at(0) = true;
+		//chunkGenerationLock = false;
+	}
+	else if(steps.at(0))
+	{
+		steps.at(0) = false;
+		steps.at(1) = true;
+
 		for(int j = 0; j < 9; j++)
 			graphics->updateTexture2D(terrainContainer.grassTextureIDs[j], 256, 256, (void**)&terrainContainer.heights[terrainContainer.tiny[j].heightsID][0], sizeof(float));
 
@@ -129,22 +137,29 @@ void TerrainAspect::runAspect(float _dt)
 		indexBuffer.resize((terrainContainer.tiny[0].size_x - 1) * (terrainContainer.tiny[0].size_y - 1) * 6 * 27);
 	
 		tempNVerts = indexBuffer.size();
-		step2 = true;
-		chunkGenerationLock = false;
 	}
-	else if(step2)
+	else if(steps.at(1))
 	{
-		step2 = false;
-		step3 = true;
+		steps.at(1) = false;
+		steps.at(2) = true;
 
 		createChunks(terrainContainer.tiny);
+	}
+	else if(steps.at(2))
+	{
+		steps.at(2) = false;
+		steps.at(3) = true;
 		createChunks(terrainContainer.medium);
 	}
-	else if(step3)
+	else if(steps.at(3))
 	{
-		step3 = false;
+		steps.at(3) = false;
+		steps.at(4) = true;
 		createChunks(terrainContainer.large);
-	
+	}
+	else if(steps.at(4))
+	{
+		steps.at(4) = false;
 		correctEdges();
 		createTerrainBuffer();
 
@@ -153,6 +168,17 @@ void TerrainAspect::runAspect(float _dt)
 		terrainContainer.largeActive	= terrainContainer.large;
 		playerContainer.playerCullingPos = playerContainer.position;
 		updateCullingNodes();
+
+		for(int i = 0; i < playerContainer.energysPos.size(); i++)
+		{
+			playerContainer.energysPos[i] = Utility::mapToTerrain(glm::vec2(playerContainer.energysPos[i].x, playerContainer.energysPos[i].z), terrainContainer);
+			if(playerContainer.energysPos[i].y < 50)
+				playerContainer.energysPos[i].y = 70;
+			else
+				playerContainer.energysPos[i].y += 20;
+		}
+
+
 	}
 
 	elapsedTime += _dt;
@@ -313,7 +339,7 @@ void TerrainAspect::createTerrainFromPosition(glm::vec2 _spawnPos)
 	stitchAllChunks(&terrainContainer.medium);
 }
 
-void TerrainAspect::createTinyFromPosition()
+void TerrainAspect::createTinyFromPosition(glm::vec2 _spawnPos)
 {
 	if(reCreateChunkThread.joinable())
 		reCreateChunkThread.join();
@@ -367,7 +393,7 @@ void TerrainAspect::createTinyFromPosition()
 	cbuffers.cbTerrain.startPos = glm::vec2(terrainContainer.large[0].position.x, terrainContainer.large[0].position.z);
 	graphics->updateCBuffer(terrainContainer.cbTerrInfo, &cbuffers.cbTerrain);
 
-	playerContainer.playerCullingPos = playerContainer.position;
+	//playerContainer.playerCullingPos = playerContainer.position;
 
 	t1.join();
 	t2.join();
