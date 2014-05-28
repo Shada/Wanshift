@@ -24,7 +24,7 @@ public:
 
 	void createTerrainBuffer();
 	void createTerrainFromPosition(glm::vec2 _spawnPos);
-	void createTinyFromPosition();
+	void createTinyFromPosition(glm::vec2 _spawnPos);
 	void calculateCullingFromSpawn(glm::vec2 _spawnPos);
 
 private:

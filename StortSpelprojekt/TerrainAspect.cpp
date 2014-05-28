@@ -54,7 +54,7 @@ void TerrainAspect::init(MainState& _mainState)
 	playerContainer.position = playerPos;
 
 	createTerrainFromPosition(glm::vec2(playerPos.x, playerPos.z));
-	createTinyFromPosition();
+	createTinyFromPosition(glm::vec2(playerPos.x, playerPos.z));
 
 	graphics->addHandle("12", ResourceType::ShaderResourceView, terrainContainer.biomMapID1);
 	graphics->addHandle("13", ResourceType::ShaderResourceView, terrainContainer.biomMapID2);
@@ -76,7 +76,6 @@ void TerrainAspect::updateCullingNodes()
 
 	for(uint i = 0; i < terrainContainer.largeActive.size(); i++)
 		terrainContainer.largeNodes.at(0).children.at(i)->addChunk(&terrainContainer.largeActive.at(i));
-
 }
 
 void TerrainAspect::calculateBufferOffsets()
@@ -124,7 +123,7 @@ void TerrainAspect::runAspect(float _dt)
 		setHeightsID(&terrainContainer.tiny, terrainContainer.tinySize);
 		
 		steps.at(0) = true;
-		chunkGenerationLock = false;
+		//chunkGenerationLock = false;
 	}
 	else if(steps.at(0))
 	{
@@ -329,7 +328,7 @@ void TerrainAspect::createTerrainFromPosition(glm::vec2 _spawnPos)
 	stitchAllChunks(&terrainContainer.medium);
 }
 
-void TerrainAspect::createTinyFromPosition()
+void TerrainAspect::createTinyFromPosition(glm::vec2 _spawnPos)
 {
 	if(reCreateChunkThread.joinable())
 		reCreateChunkThread.join();
@@ -383,7 +382,7 @@ void TerrainAspect::createTinyFromPosition()
 	cbuffers.cbTerrain.startPos = glm::vec2(terrainContainer.large[0].position.x, terrainContainer.large[0].position.z);
 	graphics->updateCBuffer(terrainContainer.cbTerrInfo, &cbuffers.cbTerrain);
 
-	playerContainer.playerCullingPos = playerContainer.position;
+	//playerContainer.playerCullingPos = playerContainer.position;
 
 	t1.join();
 	t2.join();

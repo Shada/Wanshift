@@ -627,15 +627,19 @@ void PlayerAspect::checkKeyAndDirection(KeyState _state, bool &_keyDown)
 
 void PlayerAspect::reCreateTerrain()
 {
+	float randx = ((float)rand() / RAND_MAX) * 500000 - 250000;
+	float randz = ((float)rand() / RAND_MAX) * 500000 - 250000;
+
+	spawnPos = glm::vec2(randx, randz);
 	//network->requestSpawnPos();
-	terrainAspect->createTerrainFromPosition(glm::vec2(-50000, 124675));
+	terrainAspect->createTerrainFromPosition(spawnPos);
 	threadLock = false;
 }
 
 void PlayerAspect::reCreateTinys()
 {
 	//network->requestSpawnPos();
-	terrainAspect->createTinyFromPosition();
+	terrainAspect->createTinyFromPosition(spawnPos);
 	threadLockTiny = false;
 }
 
@@ -646,14 +650,14 @@ void PlayerAspect::slowDeath(float _dt)
 		//std::thread t1(&PlayerAspect::reCreateTerrain, this);
 		//t1.detach();
 		speedDecrease = player.velocity / (deathDuration * 0.915f);
-		threadLock = true;
-		threadLockTiny = true;
+		//threadLock = true;
+		//threadLockTiny = true;
 
 		//terrainHeights = &terrain->heights[terrain->tinyActive[player.smallTerrainID].heightsID];
 	}
 
 	deathCutofTime += _dt;
-	if(deathCutofTime >= deathDuration && !threadLockTiny && !inTheAir)
+	if(deathCutofTime >= deathDuration/* && !threadLockTiny*/ && !inTheAir)
 		reset();
 
 	float freqDecrease = _dt * (1 / (deathDuration * 0.8f));
@@ -746,7 +750,7 @@ void PlayerAspect::consumeEnergy(float _dt)
 		player.energyInfo.energyLossPerDegree * player.energyInfo.energyLossPerSecond * _dt;
 
 	float energyLoss = std::max(consumption, player.energyInfo.energyLossPerSecond) *_dt * (playerBoost ? 2.5f : 1);
-	if(flashlight)	energyLoss += 1.f * _dt;
+	if(flashlight)	energyLoss += .5f * _dt;
 	
 	player.energyInfo.energyAmount -= energyLoss;
 
@@ -762,6 +766,7 @@ void PlayerAspect::consumeEnergy(float _dt)
 void PlayerAspect::reset()
 {
 	player.energyInfo = PlayerContainer::EnergyInfo(); // maybe keep temperature data and only reset energy amount? We'll see
+	
 	player.rotation = glm::vec2(0, 0);
 	verticalForce = 0;
 
@@ -781,13 +786,10 @@ void PlayerAspect::reset()
 	updatesPerAdaptationSum = 0;
 
 	terrainAspect->createTerrainBuffer();
-	player.position = glm::vec3(-50000, 500, 124675); // will fetch spawnpoint fron the server.
+	
+	player.position = glm::vec3(spawnPos.x, 0, spawnPos.y); // will fetch spawnpoint fron the server.
 	player.position.y = Utility::mapToTerrain(glm::vec2(player.position.x, player.position.z), *terrain).y;
-
-
-	float randx = ((float)rand() / RAND_MAX) * 500000 - 250000;
-	float randz = ((float)rand() / RAND_MAX) * 500000 - 250000;
-	terrainAspect->calculateCullingFromSpawn(glm::vec2(randx, randz));
+	terrainAspect->calculateCullingFromSpawn(spawnPos);
 }
 
 PlayerAspect::~PlayerAspect()
