@@ -784,7 +784,10 @@ void PlayerAspect::reset()
 	player.position = glm::vec3(-50000, 500, 124675); // will fetch spawnpoint fron the server.
 	player.position.y = Utility::mapToTerrain(glm::vec2(player.position.x, player.position.z), *terrain).y;
 
-	terrainAspect->calculateCullingFromSpawn(glm::vec2(-50000, 124675));
+
+	float randx = ((float)rand() / RAND_MAX) * 500000 - 250000;
+	float randz = ((float)rand() / RAND_MAX) * 500000 - 250000;
+	terrainAspect->calculateCullingFromSpawn(glm::vec2(randx, randz));
 }
 
 PlayerAspect::~PlayerAspect()
