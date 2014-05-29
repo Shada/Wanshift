@@ -12,3 +12,16 @@ D:\SourceTree\WanShift\Launcher\Launcher\obj\Release\Launcher.csproj.GenerateRes
 D:\SourceTree\WanShift\Launcher\Launcher\obj\Release\Launcher.exe
 D:\SourceTree\WanShift\Launcher\Launcher\obj\Release\Launcher.pdb
 D:\SourceTree\WanShift\Launcher\Launcher\obj\Release\Launcher.csprojResolveAssemblyReference.cache
+D:\Wanshift\Launcher\Launcher\bin\Release\Launcher.exe.config
+D:\Wanshift\Launcher\Launcher\bin\Release\close.png
+D:\Wanshift\Launcher\Launcher\bin\Release\close_down.png
+D:\Wanshift\Launcher\Launcher\bin\Release\Launch_down.png
+D:\Wanshift\Launcher\Launcher\bin\Release\Launch.png
+D:\Wanshift\Launcher\Launcher\bin\Release\grass.jpg
+D:\Wanshift\Launcher\Launcher\bin\Release\Launcher.exe
+D:\Wanshift\Launcher\Launcher\bin\Release\Launcher.pdb
+D:\Wanshift\Launcher\Launcher\obj\Release\Launcher.Launcher.resources
+D:\Wanshift\Launcher\Launcher\obj\Release\Launcher.Properties.Resources.resources
+D:\Wanshift\Launcher\Launcher\obj\Release\Launcher.csproj.GenerateResource.Cache
+D:\Wanshift\Launcher\Launcher\obj\Release\Launcher.exe
+D:\Wanshift\Launcher\Launcher\obj\Release\Launcher.pdb

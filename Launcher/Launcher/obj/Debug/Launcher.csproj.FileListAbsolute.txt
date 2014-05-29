@@ -11,3 +11,17 @@ D:\SourceTree\WanShift\Launcher\Launcher\bin\Debug\Launcher.pdb
 D:\SourceTree\WanShift\Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
 D:\SourceTree\WanShift\Launcher\Launcher\obj\Debug\Launcher.exe
 D:\SourceTree\WanShift\Launcher\Launcher\obj\Debug\Launcher.pdb
+D:\Wanshift\Launcher\Launcher\bin\Debug\Launcher.exe.config
+D:\Wanshift\Launcher\Launcher\bin\Debug\close.png
+D:\Wanshift\Launcher\Launcher\bin\Debug\close_down.png
+D:\Wanshift\Launcher\Launcher\bin\Debug\Launch_down.png
+D:\Wanshift\Launcher\Launcher\bin\Debug\Launch.png
+D:\Wanshift\Launcher\Launcher\bin\Debug\grass.jpg
+D:\Wanshift\Launcher\Launcher\bin\Debug\Launcher.exe
+D:\Wanshift\Launcher\Launcher\bin\Debug\Launcher.pdb
+D:\Wanshift\Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache
+D:\Wanshift\Launcher\Launcher\obj\Debug\Launcher.Launcher.resources
+D:\Wanshift\Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
+D:\Wanshift\Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.Cache
+D:\Wanshift\Launcher\Launcher\obj\Debug\Launcher.exe
+D:\Wanshift\Launcher\Launcher\obj\Debug\Launcher.pdb

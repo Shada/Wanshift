@@ -29,7 +29,7 @@
         </Directory>	
       </Directory>
 	  
-      <Directory Id='WindowsVolume' Name='PFiles'>
+      <Directory Id='ProgramFilesFolder' Name='PFiles'>
         <Directory Id='WanShift' Name='WanShift'>
           <Directory Id='INSTALLDIR' Name='WanShift'>
 			
@@ -47,9 +47,9 @@
             </Component>
 			
 			<!-- The ICP client -->
-            <Component Id='ClientIPCExecutable' Guid='*'>
+      <!--      <Component Id='ClientIPCExecutable' Guid='*'>
               <File Id='ClientIPCEXE' Name='ClientIPC.exe' DiskId='1' Source='..\Server\Release\ClientIPC.exe' KeyPath='yes' />
-            </Component>
+            </Component> -->
 
 			<!-- Helper Libraries -->
             <Component Id='RendererLibrary' Guid='*'>
@@ -68,15 +68,15 @@
               <File Id='d3dcompiler_46DLL' Name='d3dcompiler_46.dll' DiskId='1' Source='C:\Program Files (x86)\Windows Kits\8.0\Redist\D3D\x86\d3dcompiler_46.dll' KeyPath='yes' />
             </Component>
 			
-			<Component Id='D3Dcompiler_47Library' Guid='*'>
+			<!--<Component Id='D3Dcompiler_47Library' Guid='*'>
               <File Id='D3Dcompiler_47DLL' Name='D3Dcompiler_47.dll' DiskId='1' Source='C:\Windows\System32\D3Dcompiler_47.dll' KeyPath='yes' />
-            </Component>
+            </Component>-->
 			
 			<Component Id='d3dx11_43Library' Guid='*'>
               <File Id='d3dx11_43DLL' Name='d3dx11_43.dll' DiskId='1' Source='C:\Windows\System32\d3dx11_43.dll' KeyPath='yes' />
             </Component>
 			
-			<Component Id='apimswincorelibraryloaderl120Library' Guid='*'>
+			<!--<Component Id='apimswincorelibraryloaderl120Library' Guid='*'>
               <File Id='apimswincorelibraryloaderl120DLL' Name='api-ms-win-core-libraryloader-l1-2-0.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-libraryloader-l1-2-0.dll' KeyPath='yes' />
             </Component>
 			
@@ -142,23 +142,23 @@
 			
 			<Component Id='apimswincoreheapobsoletel110Library' Guid='*'>
               <File Id='apimswincoreheapobsoletel110DLL' Name='api-ms-win-core-heap-obsolete-l1-1-0.dll' DiskId='1' Source='C:\Windows\System32\api-ms-win-core-heap-obsolete-l1-1-0.dll' KeyPath='yes' />
+            </Component> -->
+			
+			<Component Id='MSVCP110Library' Guid='*'>
+              <File Id='msvcp110DLL' Name='msvcp110.dll' DiskId='1' Source='C:\Windows\System32\msvcp110.dll' KeyPath='yes' />
             </Component>
 			
-			<Component Id='MSVCP120Library' Guid='*'>
-              <File Id='msvcp120DLL' Name='msvcp120.dll' DiskId='1' Source='C:\Windows\System32\msvcp120.dll' KeyPath='yes' />
-            </Component>
-			
-			<Component Id='MSVCR120Library' Guid='*'>
-              <File Id='msvcr120DLL' Name='msvcr120.dll' DiskId='1' Source='C:\Windows\System32\msvcr120.dll' KeyPath='yes' />
+			<Component Id='MSVCR110Library' Guid='*'>
+              <File Id='msvcr110DLL' Name='msvcr110.dll' DiskId='1' Source='C:\Windows\System32\msvcr110.dll' KeyPath='yes' />
             </Component>
 			
 			<Component Id='FmodLibrary' Guid='*'>
               <File Id='fmodDLL' Name='fmod.dll' DiskId='1' Source='..\lib\fmod.dll' KeyPath='yes' />
             </Component>
 			
-			<Component Id='ClientLibrary' Guid='*'>
+			<!-- <Component Id='ClientLibrary' Guid='*'>
               <File Id='ClientDLL' Name='ClientDLL.dll' DiskId='1' Source='..\Server\Release\ClientDLL.dll' KeyPath='yes' />
-            </Component>
+            </Component> -->
 
 			<!-- Manual -->
             <Component Id='Manual' Guid='*'>
@@ -413,7 +413,7 @@
 			  </Component>
 			  
 			  <Component Id='GrassTexture' Guid='*'>
-			    <File Id='grassPNG' Name='grass.png' DiskId='1' Source='..\StortSpelprojekt\Textures\grass.png' KeyPath='yes' />
+			    <File Id='grassJPG' Name='grass3.jpg' DiskId='1' Source='..\StortSpelprojekt\Textures\grass3.jpg' KeyPath='yes' />
 			  </Component>
 			  
 			  <Component Id='GrassBlend2Texture' Guid='*'>
@@ -872,7 +872,7 @@
     <Feature Id='Complete' Title='WanShift' Description='The complete package.'
       Display='expand' Level='1' ConfigurableDirectory='INSTALLDIR'>
       <Feature Id='MainProgram' Title='Program' Description='The main executable.' Level='1'>
-        <ComponentRef Id='ClientIPCExecutable' />
+      <!--  <ComponentRef Id='ClientIPCExecutable' />  -->
         <ComponentRef Id='LauncherExecutable' />
         <ComponentRef Id='MainExecutable' />
         <ComponentRef Id='ProgramMenuDir' />
@@ -884,8 +884,8 @@
         <ComponentRef Id='WanInputLibrary' />
         <ComponentRef Id='ModelLoaderLibrary' />
         <ComponentRef Id='d3dcompiler_46Library' />
-        <ComponentRef Id='D3Dcompiler_47Library' />
-        <ComponentRef Id='apimswincorelibraryloaderl120Library' />
+<!--        <ComponentRef Id='D3Dcompiler_47Library' /> -->
+<!--        <ComponentRef Id='apimswincorelibraryloaderl120Library' />
         <ComponentRef Id='apimswincorefilel121Library' />
         <ComponentRef Id='apimswincorefilel211Library' />
         <ComponentRef Id='apimswincoreerrorhandlingl111Library' />
@@ -901,12 +901,12 @@
         <ComponentRef Id='apimswincorelocalizationl121Library' />
         <ComponentRef Id='apimswincoreiol111Library' />
         <ComponentRef Id='apimswincorestringobsoletel110Library' />
-        <ComponentRef Id='apimswincoreheapobsoletel110Library' />
-        <ComponentRef Id='MSVCP120Library' />
-        <ComponentRef Id='MSVCR120Library' />
+        <ComponentRef Id='apimswincoreheapobsoletel110Library' /> -->
+        <ComponentRef Id='MSVCP110Library' />
+        <ComponentRef Id='MSVCR110Library' />
         <ComponentRef Id='d3dx11_43Library' />
         <ComponentRef Id='FmodLibrary' />
-        <ComponentRef Id='ClientLibrary' />
+<!--        <ComponentRef Id='ClientLibrary' />-->
       </Feature>
 	  
       <Feature Id='INIComponents' Title='ini files' Description='All .ini files' Level='1'>
