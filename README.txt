@@ -23,10 +23,11 @@ Table of Content
 Rickard Fridvall
 Stefan Grahn
 Ossian Petri
-Emil Säll
+Emil Bertilsson
 Tobias Andersson
-Martin Bertilsson
+Martin SÃ¤ll
 Christopher Petersson
+Jimmy Gustafsson
 
 2.0 Hardware/Software Requirements
 The game requires at minimum:
@@ -79,7 +80,7 @@ The game uses the following controls:
 3.0 --- Debug ---
 
 3.1 The Debug Console
-Open the debug console by pressing '§'
+Open the debug console by pressing 'Â§'
 
 3.2 Domains
 In order to switch domains type 'switch domainName', where 'domainName' is one of
