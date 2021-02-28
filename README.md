@@ -1,42 +1,47 @@
 # Wanshift - A game prototype
 
+## Demo Video 
+
+[![Demo Video showing features and gameplay](https://i.imgur.com/1fNOHXR.png)](https://youtu.be/bOhlJTcyvFc)
+
 ## Table of Content
-1.0 The Team
-1.1 Members
-2.0 Hardware/Software Requirements
-2.1 Introduction
-2.2 How the Game Works
-2.3 Controls
-3.0 Debug
-3.1 The Debug Console
-3.2 Domains
-	3.2.1 SRVDEBUG
-	3.2.2 GFX
-	3.2.3 SYSTEM
-	3.2.4 CAMERA
-3.3 General Debug Commands
-4.0 Intallation notes
+
+1.0 The Team<br>
+1.1 Members<br>
+2.0 Hardware/Software Requirements<br>
+2.1 Introduction<br>
+2.2 How the Game Works<br>
+2.3 Controls<br>
+3.0 Debug<br>
+3.1 The Debug Console<br>
+3.2 Domains<br>
+	3.2.1 SRVDEBUG<br>
+	3.2.2 GFX<br>
+	3.2.3 SYSTEM<br>
+	3.2.4 CAMERA<br>
+3.3 General Debug Commands<br>
+4.0 Intallation notes<br>
 
 ## 1.0 --- The Team ---
 
-### 1.1 Members
-Rickard Fridvall
-Stefan Grahn
-Ossian Petri
-Emil Bertilsson
-Tobias Andersson
-Martin Säll
-Christopher Petersson
-Jimmy Gustafsson
+### 1.1 Members<br>
+Rickard Fridvall<br>
+Stefan Grahn<br>
+Ossian Petri<br>
+Emil Bertilsson<br>
+Tobias Andersson<br>
+Martin Säll<br>
+Christopher Petersson<br>
+Jimmy Gustafsson<br>
 
 ## 2.0 Hardware/Software Requirements
-The game requires at minimum:
-*256 MB VRAM
-*DirectX 11
-*Shader Model 5
-*256 RAM
-*Windows Vista or later
-*500 MB disk space (not really though)
+The game requires at minimum:<br>
+*256 MB VRAM<br>
+*DirectX 11<br>
+*Shader Model 5<br>
+*256 RAM<br>
+*Windows Vista or later<br>
+*500 MB disk space (not really though)<br>
 
 ## 2.1 Introduction
 WanShift is a simple survival game. The player controls a robot
@@ -56,9 +61,9 @@ A default consumption is always draining the energy slowly. Certain actions
 will increase the energy consumption. The following actions will increase
 the energy drain:
 
-*Sprinting
-*Using the headlight
-*Wisps (bright coloured moving blobs) attacks
+*Sprinting<br>
+*Using the headlight<br>
+*Wisps (bright coloured moving blobs) attacks<br>
 
 Energy can be restored by harvesting energy sources (bright blue floating blobs)
 
@@ -70,12 +75,13 @@ allow the robot to move at a slightly higher pace.
 
 ## 2.3 Controls
 The game uses the following controls:
-*Movement - WASD
-*Energy Harvest - 'e' (in close proximity to a energy resource)
-*Headlights - 'f'
-*Jump - SPACE
-*Sprint - Left Shift (during movement)
-*Exit - ESC
+
+*Movement - WASD<br>
+*Energy Harvest - 'e' (in close proximity to a energy resource)<br>
+*Headlights - 'f'<br>
+*Jump - SPACE<br>
+*Sprint - Left Shift (during movement)<br>
+*Exit - ESC<br>
 
 ## 3.0 --- Debug ---
 
@@ -85,10 +91,11 @@ Open the debug console by pressing '§'
 ### 3.2 Domains
 In order to switch domains type 'switch domainName', where 'domainName' is one of
 the following names:
-* srvdebug
-* gfx
-* system
-* camera
+
+* srvdebug<br>
+* gfx<br>
+* system<br>
+* camera<br>
 
 ### 3.2.1 SRVDEBUG
 Shows different textures in a separarate field. Used for debugging texture generation
@@ -96,32 +103,32 @@ and rendertargets. type 'show name' where 'name' corresponds to the handle name 
 resource.
 
 ### 3.2.2 GFX
-Shows:
-* Current Biom
-* Biom blend values
-* Total amount of used VRAM
-* Amount of used VRAMfor ID3D11Buffers
-* Amount of used VRAMfor ID3D11Texture2D + ID3D11Texture3D + BackBuffer
-* Amount of used VRAMfor Shaderfiles
+Shows:<br>
+* Current Biom<br>
+* Biom blend values<br>
+* Total amount of used VRAM<br>
+* Amount of used VRAMfor ID3D11Buffers<br>
+* Amount of used VRAMfor ID3D11Texture2D + ID3D11Texture3D + BackBuffer<br>
+* Amount of used VRAMfor Shaderfiles<br>
 
 ### 3.2.3 SYSTEM
-Shows:
-* Total amount of currently used RAM
-* Largest RAM peak
-* FPS
+Shows:<br>
+* Total amount of currently used RAM<br>
+* Largest RAM peak<br>
+* FPS<br>
 
 ### 3.2.4 CAMERA
-Shows:
-* Camera Mode (free / locked)
-* Avatar Position
-* Camera Position
-* Time of Day not working correctly in the current build)
+Shows:<br>
+* Camera Mode (free / locked)<br>
+* Avatar Position<br>
+* Camera Position<br>
+* Time of Day not working correctly in the current build)<br>
 
 ### 3.2 General Debug Commands
-* Debug Camera - 'cam free'
-* Game Camera - 'cam lock'
-(please note that due to a bug the user must first write 'cam lock' then
-'cam free' in order to switch to debug camera)
+* Debug Camera - 'cam free'<br>
+* Game Camera - 'cam lock'<br>
+(please note that due to a bug the user must first write 'cam lock' then<br>
+'cam free' in order to switch to debug camera)<br>
 
 ## 4.0 Installation Notes
 Double click the installation .exe and let install. Double click WanShift.exe in
